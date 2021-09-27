@@ -1,9 +1,10 @@
 import React from "react";
+import { Content, Input } from "./style";
 
 export const Login = () => {
   return (
-    <div className="about">
-      <p>Welcome to the About Page</p>
-    </div>
+    <Content>
+      <Input/>
+    </Content>
   );
 };

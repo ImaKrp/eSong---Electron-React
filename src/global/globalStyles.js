@@ -45,7 +45,6 @@ body {
   width: 100vw;
   background-color: var(--white);
   font-family: 'Lato', sans-serif;
-  /* font-family: 'Source Sans Pro', sans-serif; */
   overflow-x: hidden;
 }
 
