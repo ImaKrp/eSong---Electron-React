@@ -14,19 +14,26 @@ export default createGlobalStyle`
 }
 
 html {
+  /* White */
   --white: #fafafa;
-  --color-text: #0e0e0f;
-  --color-header: #262626;
-  --color-card-border: #f1f1f1;
+  --w100: #f6f6f6;
+  --w200: #ececec;
+  --w300: #e1e1e1;
+  --w400: #d0d0d0;
 
-  --purple: #6f4bc3;
-  
-  --red: #e83f5b;
-  --light-blue: #e0ecff;
+  /* Dark */
+  --black: #111111;
+  --b100: #1e1e1e;
+  --b200: #3c3c3c;
+  --b300: #262227;
+  --b400: #2e2b33;
 
-  --input: #202024;
-  --overlay: #040911;
-  --grey-dark: #202024;
+  /* Color */
+  --blue: #a4add3;
+  --purple: #705d97;
+  --p100: #472360;
+  --p200: #32243d;
+  --p300: #2b2031;
 
   font-size: 62.5%;
 
