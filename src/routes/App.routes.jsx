@@ -6,18 +6,15 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Login } from "../pages/Login";
-import { Log } from "../layouts/Log";
+import { Main } from "../pages/Main";
 
-export function Routes() {
+export function AppRoutes() {
   return (
     <Router>
       <Redirect from="*" to="/" />
       <Switch>
         <Route exact path="/">
-          <Log>
-            <Login />
-          </Log>
+          <Main />
         </Route>
       </Switch>
     </Router>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, createContext } from "react";
+import React, { useState, useCallback, createContext } from "react";
 import { api } from "../../api/api";
 import { changeLocalData, getLocalData } from "../../LocalStorage/LocalStorage";
 
@@ -7,17 +7,8 @@ export const sessionContext = createContext(initialState);
 
 export function SessionProvider({ children }) {
   const [Accounts, setAccounts] = useState([]);
-  const [session, setSession] = useState(
-    getLocalData("@SoundCloud:User") ?? {}
-  );
-  const [isLogged, setIsLogged] = useState(false);
+  const [session, setSession] = useState(getLocalData("@SoundCloud:User"));
   const [genId, setGenId] = useState(0);
-
-  useEffect(() => {
-    if (session) {
-      LogIn();
-    } else LogOut();
-  }, [session]);
 
   const fetchAccounts = useCallback(async () => {
     const { data } = await api.get("/accounts");
@@ -29,18 +20,8 @@ export function SessionProvider({ children }) {
     return session;
   }
 
-  function isItLogged() {
-    return isLogged;
-  }
-
-  function LogIn() {
-    setIsLogged(true);
-  }
-
   function LogOut() {
-    setIsLogged(false);
     changeLocalData({ formName: "@SoundCloud:User", object: {} });
-    setSession({});
   }
 
   async function CreateSession(Email, Pass, RemindUser) {
@@ -51,8 +32,7 @@ export function SessionProvider({ children }) {
     if (Login[0]) {
       setSession(Login[0]);
       if (RemindUser)
-        changeLocalData({ formName: "@SoundCloud:User", object: session });
-      LogIn();
+        changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
       return true;
     }
 
@@ -82,7 +62,6 @@ export function SessionProvider({ children }) {
       name: `${Name}`,
       pic: `${Picture}`,
     });
-    LogIn();
 
     return true;
   }
@@ -91,12 +70,11 @@ export function SessionProvider({ children }) {
     <sessionContext.Provider
       value={{
         onGoingSession,
-        isItLogged,
         CreateSession,
-        LogIn,
         AddAccount,
         LogOut,
         fetchAccounts,
+        session,
       }}
     >
       {children}

@@ -21,7 +21,7 @@ export const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [remindUser, setRemindUser] = useState(false);
+  const [remindUser, setRemindUser] = useState(true);
   const [visibility, setVisibility] = useState(false);
   const { CreateSession, fetchAccounts } = useSession();
 
