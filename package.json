@@ -7,12 +7,12 @@
     "appId": "react.electron",
     "productName": "react-electron",
     "mac": {
-      "icon": "build/logo512.png",
+      "icon": "public/logo512.png",
       "target": "tar.gz"
     },
     "linux": {
       "category": "Utils",
-      "icon": "build/icon.png",
+      "icon": "public/icon.png",
       "packageCategory": "utils",
       "maintainer": "your name <your email>",
       "asar": true,
@@ -23,7 +23,7 @@
       "synopsis": "Basically same as description but shorter"
     },
     "win": {
-      "icon": "build/icon.png",
+      "icon": "public/icon.png",
       "target": "nsis"
     }
   },
