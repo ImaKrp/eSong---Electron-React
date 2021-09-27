@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const Header = styled.div`
   width: 100vw;
   height: 8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
   color: var(--purple);
+  background-color: var(--black);
 
   &::after {
     content: "";
@@ -42,6 +43,6 @@ export const Body = styled.div`
   height: 100%;
   min-height: 100vh;
   width: 100vw;
-  background-color: var(--black);
+  background-color: var(--b100);
   overflow-x: hidden;
 `;
