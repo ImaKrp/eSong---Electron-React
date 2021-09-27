@@ -1,11 +1,11 @@
 {
-  "name": "react-electron",
+  "name": "cloudsound",
   "version": "0.1.0",
-  "description": "Simple boilerplate for developing an Electron app with React",
+  "description": "Simple CloudSound app with React",
   "author": "willjw3",
   "build": {
-    "appId": "react.electron",
-    "productName": "react-electron",
+    "appId": "cloudsound",
+    "productName": "cloudsound",
     "mac": {
       "icon": "public/logo512.png",
       "target": "tar.gz"
