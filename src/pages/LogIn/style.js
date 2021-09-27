@@ -43,6 +43,7 @@ export const Input = styled.input`
   &::placeholder {
     color: var(--w400);
     font-weight: 300;
+    user-select: none;
   }
 `;
 
@@ -60,6 +61,7 @@ export const Label = styled.label`
   color: var(--white);
   line-height: 3rem;
   font-weight: 500;
+  user-select: none;
 `;
 
 export const Row = styled.div`
@@ -87,6 +89,7 @@ export const LogBtn = styled.button`
   background-color: var(--purple);
   transition: filter 0.3s;
   color: var(--white);
+  user-select: none;
 
   &:hover {
     filter: brightness(1.2);
@@ -97,6 +100,7 @@ export const SpanError = styled.span`
   color: red;
   font-size: 1.6rem;
   font-weight: 300;
+  user-select: none;
 `;
 
 export const Check = styled.button`
@@ -115,7 +119,7 @@ export const Check = styled.button`
   font-size: 1.5rem;
   font-weight: 300;
   transition: background 0.3s, border 0.3s, filter 0.3s;
-
+  user-select: none;
   &:hover {
     ${({ checked }) => !checked && "background-color: var(--b300)"};
     filter: brightness(1.2);
@@ -127,6 +131,7 @@ export const Remind = styled.span`
   font-size: 1.6rem;
   font-weight: 300;
   align-items: center;
+  user-select: none;
 `;
 
 export const Content = styled.div`
@@ -154,6 +159,7 @@ export const SignUp = styled(Link)`
   border: 2px solid var(--b200);
   color: var(--white);
   transition: background-color 0.3s;
+  user-select: none;
 
   &:hover {
     background-color: var(--b200);
@@ -164,6 +170,7 @@ export const SignUpSpan = styled.span`
   font-size: 1.7rem;
   font-weight: 600;
   color: var(--w100);
+  user-select: none;
 `;
 
 export const Eye = styled.button`
@@ -179,6 +186,7 @@ export const Eye = styled.button`
   color: var(--b500);
   cursor: pointer;
   transition: color 0.3s;
+  user-select: none;
 
   &:hover {
     color: var(--purple);

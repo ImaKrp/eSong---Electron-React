@@ -25,6 +25,7 @@ export const Header = styled.div`
   p {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 4rem;
+    user-select: none;
   }
 
   span {
@@ -32,11 +33,13 @@ export const Header = styled.div`
     font-size: 1.8rem;
     top: 33%;
     position: absolute;
+    user-select: none;
   }
 `;
 
 export const Logo = styled.img`
   width: 4rem;
+  user-select: none;
 `;
 
 export const Body = styled.div`
