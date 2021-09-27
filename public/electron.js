@@ -6,10 +6,10 @@ const isDev = require("electron-is-dev");
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    minWidth: 1024,
-    height: 768,
-    minHeight: 768,
+    width: 1280,
+    minWidth: 1280,
+    height: 720,
+    minHeight: 720,
     icon: "public/icon.png",
   });
 
