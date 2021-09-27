@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Input,
@@ -14,6 +14,7 @@ import {
   SignUpSpan,
   Eye,
 } from "./style";
+import { useSession } from "../../hooks/useSession";
 
 export const Login = () => {
   const [emailError, setEmailError] = useState("");
@@ -22,6 +23,11 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [remindUser, setRemindUser] = useState(false);
   const [visibility, setVisibility] = useState(false);
+  const { CreateSession, fetchAccounts } = useSession();
+
+  useEffect(() => {
+    fetchAccounts();
+  }, [fetchAccounts]);
 
   const handleEmailChange = (value) => {
     setEmail(value);
@@ -48,6 +54,14 @@ export const Login = () => {
     if (!email) {
       setEmailError("Insira seu endereço de e-mail do SoundCloud.");
       return;
+    }
+    setEmailError();
+    setPasswordError();
+    const resp = await CreateSession(email, password, remindUser);
+    if (resp !== true) {
+      if (resp === "senha") setPasswordError("Senha incorreta.");
+
+      if (resp === "email") setEmailError("Email não Cadastrado.");
     }
   };
 
@@ -83,7 +97,7 @@ export const Login = () => {
               )}
             </Eye>
           </InputDiv>
-          {passwordError && <SpanError>Por favor, insira sua senha.</SpanError>}
+          {passwordError && <SpanError>{passwordError}</SpanError>}
         </div>
         <Row width="45rem" justify="space-between" margin="2rem 0 0 0">
           <Row gap="1rem">
@@ -101,7 +115,7 @@ export const Login = () => {
       </Form>
       <Content>
         <SignUpSpan>Não tem uma conta?</SignUpSpan>
-        <SignUp>Inscrever-se no SoundCloud</SignUp>
+        <SignUp to="/">Inscrever-se no SoundCloud</SignUp>
       </Content>
     </>
   );

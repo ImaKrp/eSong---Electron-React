@@ -88,8 +88,7 @@ export const LogBtn = styled.button`
   transition: filter 0.3s;
   color: var(--white);
 
-  &:hover,
-  &:focus {
+  &:hover {
     filter: brightness(1.2);
   }
 `;
