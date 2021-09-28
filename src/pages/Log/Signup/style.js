@@ -137,6 +137,7 @@ export const Remind = styled.span`
 export const Content = styled.div`
   width: 100vw;
   height: 100%;
+  min-height: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;

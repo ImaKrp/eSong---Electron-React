@@ -34,7 +34,7 @@ export function SessionProvider({ children }) {
     );
 
     if (Login[0]) {
-      setSession(Login[0]);
+      setSession(JSON.stringify(Login[0]));
       if (RemindUser)
         changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
       else
@@ -48,40 +48,30 @@ export function SessionProvider({ children }) {
     return Login.length > 0 ? !Login[0] && "senha" : "email";
   }
 
-  async function AddAccount(Email, Pass, Name, Picture) {
+  async function AddAccount(Email, Pass, Name, RemindUser) {
     let erro = 0;
 
     const Login = Accounts.filter((account) => account.email === Email);
     if (Login.length > 0) erro++;
 
-    if (erro > 0) return false;
+    if (erro > 0) return "email";
 
-    await api.post("/accounts", {
+    const submit = {
       id: `${genId}`,
       email: `${Email}`,
       pass: `${Pass}`,
       name: `${Name}`,
-      pic: `${Picture}`,
-    });
+      pic: ``,
+    };
+    console.log(submit);
+    await api.post("/accounts", submit);
 
-    setSession({
-      id: `${genId}`,
-      email: `${Email}`,
-      pass: `${Pass}`,
-      name: `${Name}`,
-      pic: `${Picture}`,
-    });
+    setSession(JSON.stringify(submit));
 
-    changeLocalData({
-      formName: "@SoundCloud:User",
-      object: {
-        id: `${genId}`,
-        email: `${Email}`,
-        pass: `${Pass}`,
-        name: `${Name}`,
-        pic: `${Picture}`,
-      },
-    });
+    if (RemindUser) changeLocalData({ formName: "@SoundCloud:User", submit });
+    else
+      window.sessionStorage.setItem("@SoundCloud:User", JSON.stringify(submit));
+
     return true;
   }
 

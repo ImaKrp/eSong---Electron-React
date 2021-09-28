@@ -35,7 +35,7 @@ export const Login = () => {
         setServerError(
           "Error: Couldn't Connect to Server http://localhost:8000"
         );
-        return err.toString()
+      return err.toString();
     }
   }, [fetchAccounts]);
 
@@ -45,43 +45,44 @@ export const Login = () => {
 
   const handleEmailChange = (value) => {
     setEmail(value);
-    setEmailError(value ? "" : "Insira seu endereço de e-mail do SoundCloud.");
+    setEmailError(
+      value ? "" : "⨉ Insira seu endereço de e-mail do SoundCloud."
+    );
   };
 
   const handlePasswordChange = (value) => {
     setPassword(value);
-    setPasswordError(value ? "" : "Por favor, insira sua senha.");
+    setPasswordError(value ? "" : "⨉ Por favor, insira sua senha.");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const serverStatus = await testServer()
+    const serverStatus = await testServer();
     if (serverStatus) {
       setServerError("Error: Couldn't Connect to Server http://localhost:8000");
       return;
     }
 
-    if (!email && !password) {
-      setEmailError("Insira seu endereço de e-mail do SoundCloud.");
-      setPasswordError("Por favor, insira sua senha.");
-      return;
-    }
+    let error = 0;
+
     if (!password) {
-      setPasswordError("Por favor, insira sua senha.");
-      return;
+      setPasswordError("⨉ Por favor, insira sua senha.");
+      error++;
     }
+
     if (!email) {
-      setEmailError("Insira seu endereço de e-mail do SoundCloud.");
-      return;
+      setEmailError("⨉ Insira seu endereço de e-mail do SoundCloud.");
+      error++;
     }
+
+    if (error > 0) return;
+
     setEmailError();
     setPasswordError();
     const resp = await CreateSession(email, password, remindUser);
     if (resp !== true) {
-      if (resp === "senha") setPasswordError("Senha incorreta.");
-
-      if (resp === "email") setEmailError("Email não Cadastrado.");
+      if (resp === "email") setPasswordError("⨉ E-mail já Cadastrado.");
     }
   };
 
@@ -92,7 +93,7 @@ export const Login = () => {
         <div>
           <Label>Endereço de e-mail</Label>
           <Input
-            placeholder="Endereço de e-mail"
+            placeholder="Insira seu endereço de e-mail."
             type="email"
             isOnError={emailError}
             value={email}
@@ -104,7 +105,7 @@ export const Login = () => {
           <Label>Senha</Label>
           <InputDiv>
             <Input
-              placeholder="Senha"
+              placeholder="Insira sua senha."
               type={visibility ? "text" : "password"}
               isOnError={passwordError}
               value={password}
