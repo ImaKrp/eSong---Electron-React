@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const LogBtn = styled.button`
   height: 4.8rem;
@@ -109,6 +109,26 @@ export const CollapseBtns = styled.button`
   }
 `;
 
+export const CollapseLinks = styled(Link)`
+  display: flex;
+  width: 100%;
+  user-select: none;
+  text-align: start;
+  padding: 12px;
+  font-size: 1.4rem;
+  justify-content: space-between;
+  color: var(--white);
+  display: flex;
+  transition: background-color 0.3s;
+  background-color: var(--b600);
+  cursor: pointer;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: var(--b700);
+  }
+`;
+
 export const Collapse = styled.div`
   display: ${({ active }) => (active ? `flex` : "none")};
   flex-direction: column;
@@ -120,6 +140,40 @@ export const Collapse = styled.div`
   width: 24rem;
   box-shadow: 0 16px 24px rgb(0 0 0 / 30%), 0 6px 8px rgb(0 0 0 / 20%);
   position: absolute;
-  bottom: -5.5rem;
+  bottom: -9.4rem;
   right: 0;
+`;
+
+export const Home = styled(Link)`
+  width: 3.1rem;
+  height: 3.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--b600);
+  border-radius: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--b700);
+  }
+
+  img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+  }
+`;
+
+export const TurnOffCollapse = styled.div`
+  height: 3.1rem;
+  width: 100%;
+  position: absolute;
+  cursor: pointer;
+
+  &:hover ~ .User {
+    background-color: var(--b700);
+  }
 `;

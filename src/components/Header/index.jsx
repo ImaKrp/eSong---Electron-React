@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Wrapper,
   Container,
@@ -7,24 +7,37 @@ import {
   UserSVG,
   Arrow,
   CollapseBtns,
+  CollapseLinks,
   Collapse,
+  Home,
+  TurnOffCollapse,
 } from "./style";
 import { useSession } from "../../hooks/useSession";
-// import { useHistory } from "react-router-dom";
 
 export const Header = () => {
   const { LogOut, session } = useSession();
   const [active, setActive] = useState(false);
-  // const history = useHistory();
-  // history.goBack()
-  // history.goForward()
+
+  useEffect(() => {
+    document.body.addEventListener("click", closeCollapse);
+  });
+
+  const closeCollapse = () => {
+    setActive(false);
+    document.body.removeEventListener("click", closeCollapse);
+  };
 
   return (
     <>
       <Wrapper>
-        <Container></Container>
         <Container>
-          <User onClick={() => setActive(!active)}>
+          <Home to="/">
+            <img src="/icons/home.svg" alt="goToHome" />
+          </Home>
+        </Container>
+        <Container>
+          {active && <TurnOffCollapse />}
+          <User className="User" onClick={() => setActive(!active)}>
             {session.pic ? (
               <Image src={session.pic} />
             ) : (
@@ -36,6 +49,7 @@ export const Header = () => {
             <Arrow active={active} className="fas fa-sort-down"></Arrow>
           </User>
           <Collapse active={active}>
+            <CollapseLinks to="/profile">Perfil</CollapseLinks>
             <CollapseBtns onClick={() => LogOut()}>Sair</CollapseBtns>
           </Collapse>
         </Container>
