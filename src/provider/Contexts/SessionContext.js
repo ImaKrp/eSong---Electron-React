@@ -19,10 +19,6 @@ export function SessionProvider({ children }) {
     setGenId(Accounts.length + 1);
   }, [Accounts.length]);
 
-  function onGoingSession() {
-    return session;
-  }
-
   function LogOut() {
     localStorage.removeItem("@SoundCloud:User");
     setSession();
@@ -34,7 +30,7 @@ export function SessionProvider({ children }) {
     );
 
     if (Login[0]) {
-      setSession(JSON.stringify(Login[0]));
+      setSession(Login[0]);
       if (RemindUser)
         changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
       else
@@ -66,11 +62,11 @@ export function SessionProvider({ children }) {
     console.log(submit);
     await api.post("/accounts", submit);
 
-    setSession(JSON.stringify(submit));
+    setSession(submit);
 
     if (RemindUser) changeLocalData({ formName: "@SoundCloud:User", submit });
     else
-      window.sessionStorage.setItem("@SoundCloud:User", JSON.stringify(submit));
+      window.sessionStorage.setItem("@SoundCloud:User", submit);
 
     return true;
   }
@@ -78,7 +74,6 @@ export function SessionProvider({ children }) {
   return (
     <sessionContext.Provider
       value={{
-        onGoingSession,
         CreateSession,
         AddAccount,
         LogOut,
