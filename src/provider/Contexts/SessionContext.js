@@ -7,7 +7,10 @@ export const sessionContext = createContext(initialState);
 
 export function SessionProvider({ children }) {
   const [Accounts, setAccounts] = useState([]);
-  const [session, setSession] = useState(getLocalData("@SoundCloud:User"));
+  const [session, setSession] = useState(
+    getLocalData("@SoundCloud:User") ??
+      JSON.parse(window.sessionStorage.getItem("@SoundCloud:User"))
+  );
   const [genId, setGenId] = useState(0);
 
   const fetchAccounts = useCallback(async () => {
@@ -21,7 +24,8 @@ export function SessionProvider({ children }) {
   }
 
   function LogOut() {
-    changeLocalData({ formName: "@SoundCloud:User", object: {} });
+    localStorage.removeItem("@SoundCloud:User");
+    setSession();
   }
 
   async function CreateSession(Email, Pass, RemindUser) {
@@ -33,6 +37,11 @@ export function SessionProvider({ children }) {
       setSession(Login[0]);
       if (RemindUser)
         changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
+      else
+        window.sessionStorage.setItem(
+          "@SoundCloud:User",
+          JSON.stringify(Login[0])
+        );
       return true;
     }
 
@@ -63,6 +72,16 @@ export function SessionProvider({ children }) {
       pic: `${Picture}`,
     });
 
+    changeLocalData({
+      formName: "@SoundCloud:User",
+      object: {
+        id: `${genId}`,
+        email: `${Email}`,
+        pass: `${Pass}`,
+        name: `${Name}`,
+        pic: `${Picture}`,
+      },
+    });
     return true;
   }
 

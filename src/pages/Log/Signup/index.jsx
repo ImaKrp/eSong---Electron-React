@@ -1,33 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Form,
   Input,
   InputDiv,
   Label,
   Row,
-  LogBtn,
+  SignBtn,
   SpanError,
   Remind,
   Check,
   Content,
-  SignUp,
-  SignUpSpan,
+  Login,
+  LoginSpan,
   Eye,
+  ServerToast,
 } from "./style";
-import { useSession } from "../../hooks/useSession";
+import { useSession } from "../../../hooks/useSession";
 
-export const Login = () => {
+export const Signup = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [serverError, setServerError] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [remindUser, setRemindUser] = useState(true);
   const [visibility, setVisibility] = useState(false);
   const { CreateSession, fetchAccounts } = useSession();
 
-  useEffect(() => {
-    fetchAccounts();
+  const testServer = useCallback(async () => {
+    try {
+      await fetchAccounts();
+    } catch (err) {
+      if (err.toString() === "Error: Network Error")
+        setServerError(
+          "Error: Couldn't Connect to Server http://localhost:8000"
+        );
+      return err.toString();
+    }
   }, [fetchAccounts]);
+
+  useEffect(() => {
+    testServer();
+  }, [testServer]);
 
   const handleEmailChange = (value) => {
     setEmail(value);
@@ -36,12 +50,18 @@ export const Login = () => {
 
   const handlePasswordChange = (value) => {
     setPassword(value);
-    setPasswordError(value ? false : true);
     setPasswordError(value ? "" : "Por favor, insira sua senha.");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const serverStatus = await testServer();
+    if (serverStatus) {
+      setServerError("Error: Couldn't Connect to Server http://localhost:8000");
+      return;
+    }
+
     if (!email && !password) {
       setEmailError("Insira seu endereço de e-mail do SoundCloud.");
       setPasswordError("Por favor, insira sua senha.");
@@ -68,8 +88,9 @@ export const Login = () => {
   return (
     <>
       <Form onSubmit={(e) => handleSubmit(e)}>
+        {serverError && <ServerToast>{serverError}</ServerToast>}
         <div>
-          <Label>Endereço de e-mail</Label>
+          <Label>OOOOII</Label>
           <Input
             placeholder="Endereço de e-mail"
             type="email"
@@ -110,12 +131,14 @@ export const Login = () => {
             </Check>
             <Remind>Lembrar de mim</Remind>
           </Row>
-          <LogBtn type="submit">ENTRAR</LogBtn>
+          <SignBtn type="submit">INSCREVER-SE</SignBtn>
         </Row>
       </Form>
       <Content>
-        <SignUpSpan>Não tem uma conta?</SignUpSpan>
-        <SignUp to="/">Inscrever-se no SoundCloud</SignUp>
+        <LoginSpan>
+          Já tem uma conta?
+          <Login to="/login"> Faça login</Login>.
+        </LoginSpan>
       </Content>
     </>
   );

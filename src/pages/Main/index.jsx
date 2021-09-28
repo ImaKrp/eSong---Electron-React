@@ -1,13 +1,14 @@
 import React from "react";
-import {
-  LogBtn,
-
-} from "./style";
+import { LogBtn } from "./style";
+import { useSession } from "../../hooks/useSession";
 
 export const Main = () => {
+  const { LogOut } = useSession();
   return (
     <>
-      <LogBtn type="submit">ENTRAR</LogBtn>
+      <LogBtn type="button" onClick={() => LogOut()}>
+        SAIR
+      </LogBtn>
     </>
   );
 };

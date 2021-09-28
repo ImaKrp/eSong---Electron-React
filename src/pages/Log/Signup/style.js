@@ -75,7 +75,7 @@ export const Row = styled.div`
   gap: ${({ gap }) => (gap ? `${gap}` : "0")};
 `;
 
-export const LogBtn = styled.button`
+export const SignBtn = styled.button`
   height: 4.8rem;
   width: 21rem;
   display: flex;
@@ -143,32 +143,18 @@ export const Content = styled.div`
   gap: 2rem;
 `;
 
-export const SignUp = styled(Link)`
-  width: 45rem;
-  height: 4.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 2.4rem;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
-  font-weight: 600;
-  background-color: transparent;
-  transition: filter 0.3s;
-  border: 2px solid var(--b200);
-  color: var(--white);
-  transition: background-color 0.3s;
-  user-select: none;
+export const Login = styled(Link)`
+  color: var(--purple);
+  transition: color 0.3s;
 
   &:hover {
-    background-color: var(--b200);
+    color: var(--blue);
   }
 `;
 
-export const SignUpSpan = styled.span`
-  font-size: 1.7rem;
-  font-weight: 600;
+export const LoginSpan = styled.span`
+  font-size: 1.6rem;
+  font-weight: 500;
   color: var(--w100);
   user-select: none;
 `;
@@ -191,4 +177,19 @@ export const Eye = styled.button`
   &:hover {
     color: var(--purple);
   }
+`;
+
+export const ServerToast = styled.div`
+  width: 45rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--red);
+  text-align: center;
 `;

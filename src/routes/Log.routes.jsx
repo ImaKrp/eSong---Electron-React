@@ -6,7 +6,8 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Login } from "../pages/Login";
+import { Login } from "../pages/Log/Login";
+import { Signup } from "../pages/Log/Signup";
 import { Log } from "../layouts/Log";
 
 export function LogRoutes() {
@@ -17,6 +18,11 @@ export function LogRoutes() {
         <Route exact path="/login">
           <Log>
             <Login />
+          </Log>
+        </Route>
+        <Route exact path="/signup">
+          <Log>
+            <Signup />
           </Log>
         </Route>
       </Switch>
