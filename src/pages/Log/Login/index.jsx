@@ -26,7 +26,6 @@ export const Login = () => {
   const [remindUser, setRemindUser] = useState(true);
   const [visibility, setVisibility] = useState(false);
   const { CreateSession, fetchAccounts } = useSession();
-
   const testServer = useCallback(async () => {
     try {
       await fetchAccounts();

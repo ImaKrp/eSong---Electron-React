@@ -6,6 +6,13 @@
       "pass": "123",
       "name": "kreep",
       "pic": "https://cdn.discordapp.com/avatars/302972521731457034/6265d23c70b75601db16b6c92dec6cca.png?size=256"
+    },
+    {
+      "id": "2",
+      "email": "123@gmail.com",
+      "pass": "123",
+      "name": "123",
+      "pic": ""
     }
   ]
 }

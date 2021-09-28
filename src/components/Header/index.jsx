@@ -10,11 +10,15 @@ import {
   Collapse,
 } from "./style";
 import { useSession } from "../../hooks/useSession";
+import { useHistory } from "react-router-dom";
 
 export const Header = () => {
   const { LogOut, session } = useSession();
   const [active, setActive] = useState(false);
-  console.log(session)
+  const history = useHistory();
+  // history.goBack()
+  // history.goForward()
+
   return (
     <>
       <Wrapper>

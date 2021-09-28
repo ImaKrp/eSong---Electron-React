@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
 import { Main } from "../pages/Main";
 
 export function AppRoutes() {
