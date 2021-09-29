@@ -10,6 +10,7 @@ export const ImageDiv = styled.div`
   box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
+  user-select: none;
   justify-content: center;
 
   &:hover .edit {
@@ -54,6 +55,7 @@ export const Infos = styled.div`
     font-weight: 700;
     font-size: 7rem;
     padding-bottom: 1.5rem;
+    user-select: none;
 
     .profile {
       font-size: 1.4rem;
@@ -63,10 +65,9 @@ export const Infos = styled.div`
       display: flex;
       gap: 1rem;
       width: fit-content;
-      &:hover .edit{
+      &:hover .edit {
         display: flex;
       }
-
     }
   }
 `;
@@ -87,6 +88,7 @@ export const EditName = styled.button`
   cursor: pointer;
   background-color: transparent;
   height: 3rem;
+  user-select: none;
   margin-top: 3.5rem;
   img {
     width: 4rem;
@@ -109,6 +111,7 @@ export const EditImage = styled.button`
   transition: background-color 0.3s;
   background-color: #000000a6;
   border-radius: 11.5rem;
+  user-select: none;
   img {
     width: 6rem;
   }

@@ -60,6 +60,7 @@ export const User = styled.button`
   font-weight: medium;
   cursor: pointer;
   transition: background-color 0.3s;
+  user-select: none;
 
   &:hover {
     background-color: var(--b700);
@@ -158,6 +159,7 @@ export const Home = styled(Link)`
   color: var(--white);
   cursor: pointer;
   transition: background-color 0.3s;
+  user-select: none;
 
   &:hover {
     background-color: var(--b700);
