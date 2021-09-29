@@ -21,6 +21,7 @@ export function SessionProvider({ children }) {
 
   function LogOut() {
     localStorage.removeItem("@SoundCloud:User");
+    window.sessionStorage.removeItem("@SoundCloud:User");
     setSession();
   }
 
@@ -82,7 +83,8 @@ export function SessionProvider({ children }) {
     await api.put(`/accounts/${id}`, submit);
     setSession(submit);
 
-    if (getLocalData("@SoundCloud:User")) changeLocalData({ formName: "@SoundCloud:User", submit });
+    if (getLocalData("@SoundCloud:User"))
+      changeLocalData({ formName: "@SoundCloud:User", submit });
     else window.sessionStorage.setItem("@SoundCloud:User", submit);
 
     return true;
