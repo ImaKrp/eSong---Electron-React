@@ -2,7 +2,6 @@ import React from "react";
 import { SliderWrapper, SliderIn, Thumb, Range } from "./style";
 
 export const Slider = (props) => {
-  console.log(props.percentage)
   return (
     <>
       <SliderWrapper>

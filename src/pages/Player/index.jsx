@@ -14,6 +14,7 @@ import { useQuery } from "../../hooks/useQuery";
 import FastAverageColor from "fast-average-color";
 import { useSong } from "../../hooks/useSong";
 import { Slider } from "../../components/Slider";
+import { Redirect } from "react-router-dom";
 
 export const Player = () => {
   const query = useQuery();
@@ -25,6 +26,7 @@ export const Player = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [redirectToNext, setRedirectToNext] = useState(false);
 
   const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
   const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
@@ -61,9 +63,12 @@ export const Player = () => {
 
     setPercentage(+percent);
     setCurrentTime(time.toFixed(2));
+    if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
+      setRedirectToNext(NextIndex);
+    }
   };
 
-  const play = () => {
+  const play = (isPlaying) => {
     const audio = audioRef.current;
     audio.volume = 0.1;
 
@@ -87,13 +92,14 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <Slider percentage={percentage} onChange={onChange} />
+          <Slider percentage={percentage ?? '1'} onChange={onChange} />
           <audio
             ref={audioRef}
             src={song?.preview}
             onTimeUpdate={getCurrDuration}
             onLoadedData={(e) => {
               setDuration(e.currentTarget.duration.toFixed(2));
+              play();
             }}
           ></audio>
           <div className="row">
@@ -107,22 +113,16 @@ export const Player = () => {
             </span>
           </div>
           <Controlers>
-            <PrevSong
-              to={`/song?index=${PrevIndex}`}
-              onClick={() => setIsPlaying(false)}
-            >
+            <PrevSong to={`/song?index=${PrevIndex}`}>
               <img src="/icons/PrevSong.svg" alt="previousSong" />
             </PrevSong>
-            <Play onClick={() => play()}>
+            <Play onClick={() => play(isPlaying)}>
               <img
                 src={isPlaying ? "/icons/pause.svg" : "/icons/play.svg"}
                 alt="playSong"
               />
             </Play>
-            <NextSong
-              to={`/song?index=${NextIndex}`}
-              onClick={() => setIsPlaying(false)}
-            >
+            <NextSong to={`/song?index=${NextIndex}`}>
               <img src="/icons/NextSong.svg" alt="nextSong" />
             </NextSong>
           </Controlers>
@@ -131,6 +131,7 @@ export const Player = () => {
       <Body color={color?.hex}>
         <Content></Content>
       </Body>
+      {redirectToNext === NextIndex && <Redirect to={`/song?index=${NextIndex}`} />}
     </>
   );
 };
