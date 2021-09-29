@@ -12,15 +12,6 @@ export const Header = styled.div`
   color: var(--purple);
   background-color: var(--black);
 
-  &::after {
-    content: "";
-    background-color: var(--b700);
-    position: absolute;
-    height: 1px;
-    width: 100vw;
-    bottom: 0;
-  }
-
   p {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 4rem;

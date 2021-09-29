@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#705D97;}
 </style>
-<g id="Camada_1">
-	
-		<image style="display:none;overflow:visible;opacity:0.56;" width="800" height="600" xlink:href="800CD3E9.jpg"  transform="matrix(2.7435 0 0 2.7435 -841.3989 -567.0491)">
-	</image>
+<g id="Camada_2_1_">
+	<path class="st0" d="M0,286.7l225.9,225L71,511.9C31.8,512,0,480.2,0,441V286.7z"/>
+	<path class="st0" d="M286.7,0l225,225.9L511.9,71C512,31.8,480.2,0,441,0H286.7z"/>
 </g>
-<g id="Camada_2">
-	<path class="st0" d="M35.9,203.9l272.2,272.2c46.4,46.4,121.6,46.4,168,0l0,0c46.4-46.4,46.4-121.6,0-168L203.9,35.9
-		c-46.4-46.4-121.6-46.4-168,0l0,0C-10.5,82.3-10.5,157.5,35.9,203.9z"/>
-	<polygon class="st0" points="0,286.7 225.9,511.7 0,512 	"/>
-	<polygon class="st0" points="286.7,0 511.7,225.9 512,0 	"/>
+<g>
+	<path class="st0" d="M476.1,308.1L369.6,201.6l-168,168l106.5,106.5c46.4,46.4,121.6,46.4,168,0
+		C522.5,429.7,522.5,354.5,476.1,308.1z"/>
+	<path class="st0" d="M310.4,142.4L203.9,35.9c-46.4-46.4-121.6-46.4-168,0c-46.4,46.4-46.4,121.6,0,168l106.5,106.5L310.4,142.4z"
+		/>
 </g>
 </svg>
