@@ -1,5 +1,5 @@
 import React, { useState, useCallback, createContext } from "react";
-import { api } from "../../api/api";
+import { userApi } from "../../api/api";
 import {
   changeLocalData,
   getLocalData,
@@ -22,7 +22,7 @@ export function SessionProvider({ children }) {
   }
 
   const fetchAccounts = useCallback(async () => {
-    const { data } = await api.get("/accounts");
+    const { data } = await userApi.get("/accounts");
     setAccounts(data);
     setGenId(Accounts.length + 1);
   }, [Accounts.length]);
@@ -67,7 +67,7 @@ export function SessionProvider({ children }) {
       name: `${name}`,
       pic: ``,
     };
-    await api.post("/accounts", submit);
+    await userApi.post("/accounts", submit);
 
     setSession(submit);
 
@@ -88,7 +88,7 @@ export function SessionProvider({ children }) {
       pic: `${pic}`,
     };
 
-    await api.put(`/accounts/${id}`, submit);
+    await userApi.put(`/accounts/${id}`, submit);
 
     setSession(submit);
 

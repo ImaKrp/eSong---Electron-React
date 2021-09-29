@@ -24,6 +24,11 @@ export function AppRoutes() {
             <Profile />
           </Menu>
         </Route>
+        <Route exact path="/song">
+          <Menu>
+            <Profile />
+          </Menu>
+        </Route>
       </Switch>
     </Router>
   );
