@@ -49,7 +49,7 @@ export const Profile = () => {
             <div className="profile">PERFIL</div>
             <div className="row">
               {session.name}
-              <EditName onClick={() => setActive(!active)}>
+              <EditName className="edit" onClick={() => setActive(!active)}>
                 <img src="/icons/edit.svg" alt="editName" />
               </EditName>
             </div>

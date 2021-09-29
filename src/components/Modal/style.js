@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 52rem;
-  height: 32rem;
+  height: 33rem;
   background-color: var(--b100);
   position: absolute;
   z-index: 5;
@@ -112,6 +112,7 @@ export const Input = styled.input`
   font-size: 14px;
   border: 1px solid
     ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--b700)")};
+  transition: border 0.3s;
 
   &:focus {
     border: 1px solid

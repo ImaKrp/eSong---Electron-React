@@ -42,7 +42,7 @@ export const Infos = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 3rem;
   margin-bottom: 3.5rem;
   .column {
     height: 18rem;
@@ -62,6 +62,11 @@ export const Infos = styled.div`
     .row {
       display: flex;
       gap: 1rem;
+      width: fit-content;
+      &:hover .edit{
+        display: flex;
+      }
+
     }
   }
 `;
@@ -72,11 +77,11 @@ export const Content = styled.div`
   position: absolute;
   left: 0;
   top: 30rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.33);
 `;
 
 export const EditName = styled.button`
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;

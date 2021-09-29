@@ -14,13 +14,31 @@ import { useSession } from "../../hooks/useSession";
 
 export const Modal = (props) => {
   const { session, updateUser } = useSession();
-  const [newPicture, setNewPicture] = useState("https://");
+  const [newPicture, setNewPicture] = useState(session.pic ?? "https://");
+  const [newPictureError, setNewPictureError] = useState("");
   const [name, setName] = useState(session.name);
   const [nameError, setNameError] = useState("");
 
   const handleNameChange = (value) => {
     setName(value);
     setNameError(value ? "" : "⨉ Insira um nome de exibição.");
+  };
+
+  const handlePictureChange = (value) => {
+    setNewPicture(value);
+    if (value === "" || value === "https://") {
+      setNewPictureError();
+      return;
+    }
+
+    function isImgLink(url) {
+      if (typeof url !== "string") return false;
+      return url.match(/^http[^]*.(jpeg|jpg|gif|png|svg)((.*))?$/gim) != null;
+    }
+
+    setNewPictureError(
+      isImgLink(value) ? "" : "⨉ Insira uma url válida ou a remova."
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -33,8 +51,11 @@ export const Modal = (props) => {
       error++;
     }
 
+    if (newPictureError) error++;
+
     if (error > 0) return;
     await updateUser(session.email, session.pass, name, newPicture, session.id);
+    props.onClick()
   };
 
   return (
@@ -51,9 +72,7 @@ export const Modal = (props) => {
               </div>
               <div className="row last">
                 <ImageDiv>
-                  {newPicture !== "" && newPicture !== "https://" ? (
-                    <Image src={newPicture} />
-                  ) : (
+                  {newPictureError ? (
                     <>
                       {session.pic ? (
                         <Image src={session.pic} />
@@ -63,6 +82,24 @@ export const Modal = (props) => {
                           src="/icons/user.svg"
                           alt="genUserImg"
                         />
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {newPicture !== "" && newPicture !== "https://" ? (
+                        <Image src={newPicture} />
+                      ) : (
+                        <>
+                          {session.pic ? (
+                            <Image src={session.pic} />
+                          ) : (
+                            <Image
+                              size="65%"
+                              src="/icons/user.svg"
+                              alt="genUserImg"
+                            />
+                          )}
+                        </>
                       )}
                     </>
                   )}
@@ -84,9 +121,13 @@ export const Modal = (props) => {
                     <Input
                       placeholder="Adicionar uma url de imagem."
                       type="text"
+                      isOnError={newPictureError}
                       value={newPicture}
-                      onChange={(e) => setNewPicture(e.target.value)}
+                      onChange={(e) => handlePictureChange(e.target.value)}
                     />
+                    {newPictureError && (
+                      <SpanError>{newPictureError}</SpanError>
+                    )}
                   </div>
                   <Submit type="submit">SALVAR</Submit>
                 </Form>

@@ -1,6 +1,11 @@
 import React, { useState, useCallback, createContext } from "react";
 import { api } from "../../api/api";
-import { changeLocalData, getLocalData } from "../../LocalStorage/LocalStorage";
+import {
+  changeLocalData,
+  getLocalData,
+  changeSessionData,
+  getSessionData,
+} from "../../Storage/Storage";
 
 const initialState = [];
 export const sessionContext = createContext(initialState);
@@ -8,8 +13,7 @@ export const sessionContext = createContext(initialState);
 export function SessionProvider({ children }) {
   const [Accounts, setAccounts] = useState([]);
   const [session, setSession] = useState(
-    getLocalData("@SoundCloud:User") ??
-      JSON.parse(window.sessionStorage.getItem("@SoundCloud:User"))
+    getLocalData("@SoundCloud:User") ?? getSessionData("@SoundCloud:User")
   );
   const [genId, setGenId] = useState(0);
 
@@ -35,10 +39,7 @@ export function SessionProvider({ children }) {
       if (RemindUser)
         changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
       else
-        window.sessionStorage.setItem(
-          "@SoundCloud:User",
-          JSON.stringify(Login[0])
-        );
+        changeSessionData({ formName: "@SoundCloud:User", object: Login[0] });
       return true;
     }
 
@@ -65,7 +66,7 @@ export function SessionProvider({ children }) {
     setSession(submit);
 
     if (RemindUser) changeLocalData({ formName: "@SoundCloud:User", submit });
-    else window.sessionStorage.setItem("@SoundCloud:User", submit);
+    else changeSessionData({ formName: "@SoundCloud:User", object: submit });
 
     return true;
   }
@@ -74,6 +75,7 @@ export function SessionProvider({ children }) {
     if (pic === "https://") pic = "";
 
     const submit = {
+      id: `${id}`,
       email: `${email}`,
       pass: `${pass}`,
       name: `${name}`,
@@ -81,11 +83,12 @@ export function SessionProvider({ children }) {
     };
 
     await api.put(`/accounts/${id}`, submit);
+
     setSession(submit);
 
-    if (getLocalData("@SoundCloud:User"))
-      changeLocalData({ formName: "@SoundCloud:User", submit });
-    else window.sessionStorage.setItem("@SoundCloud:User", submit);
+    if (getLocalData("@SoundCloud:User")) {
+      changeLocalData({ formName: "@SoundCloud:User", object: submit });
+    } else changeSessionData({ formName: "@SoundCloud:User", object: submit });
 
     return true;
   }
