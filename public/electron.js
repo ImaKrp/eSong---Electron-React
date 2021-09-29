@@ -7,9 +7,8 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1280,
-    minWidth: 1280,
     height: 720,
-    minHeight: 720,
+    resizable: false,
     icon: "public/icon.png",
   });
 
