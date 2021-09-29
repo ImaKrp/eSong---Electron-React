@@ -63,9 +63,10 @@ export const Player = () => {
 
     setPercentage(+percent);
     setCurrentTime(time.toFixed(2));
-    if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
-      setRedirectToNext(NextIndex);
-    }
+    if (Number(time) !== 0)
+      if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
+        setRedirectToNext(NextIndex);
+      }
   };
 
   const play = (isPlaying) => {
@@ -92,7 +93,7 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <Slider percentage={percentage ?? '1'} onChange={onChange} />
+          <Slider percentage={percentage ?? "1"} onChange={onChange} />
           <audio
             ref={audioRef}
             src={song?.preview}
