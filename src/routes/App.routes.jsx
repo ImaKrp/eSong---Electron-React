@@ -5,7 +5,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { Main } from "../pages/Main";
+import { Main } from "../pages/Menu/Main";
+import { Profile } from "../pages/Menu/Profile";
+import { Menu } from "../layouts/Menu";
 
 export function AppRoutes() {
   return (
@@ -13,7 +15,14 @@ export function AppRoutes() {
       <Redirect from="*" to="/" />
       <Switch>
         <Route exact path="/">
-          <Main />
+          <Menu>
+            <Main />
+          </Menu>
+        </Route>
+        <Route exact path="/profile">
+          <Menu>
+            <Profile />
+          </Menu>
         </Route>
       </Switch>
     </Router>

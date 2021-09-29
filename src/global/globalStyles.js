@@ -22,8 +22,8 @@ html {
   --w400: #d0d0d0;
 
   /* Dark */
-  --black: #111111;
-  --b100: #1e1e1e;
+  --black: #171717;
+  --b100: #232323;
   --b200: #3c3c3c;
   --b300: #262227;
   --b400: #2e2b33;
@@ -38,7 +38,7 @@ html {
   --p200: #32243d;
   --p300: #2b2031;
 
-  --red: #630A10;
+  --red: #9e3145  ;
 
   font-size: 62.5%;
 
@@ -51,6 +51,10 @@ body {
   background-color: var(--white);
   font-family: 'Lato', sans-serif;
   overflow-x: hidden;
+}
+
+input{
+  font-family: 'Lato', sans-serif;
 }
 
 .sr-only {

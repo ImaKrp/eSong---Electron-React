@@ -5471,6 +5471,11 @@
   "resolved" "https://registry.npmjs.org/extsprintf/-/extsprintf-1.3.0.tgz"
   "version" "1.3.0"
 
+"fast-average-color@^6.4.2":
+  "integrity" "sha512-aVtrSOl5m9E3dSzJTQZtm4rgAtTjTILhlLDK8UB+nseLr4Ss+rtDUVESPEGERiQ/tNckWCECQtxGvo1ickd6yA=="
+  "resolved" "https://registry.npmjs.org/fast-average-color/-/fast-average-color-6.4.2.tgz"
+  "version" "6.4.2"
+
 "fast-deep-equal@^3.1.1", "fast-deep-equal@^3.1.3":
   "integrity" "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="
   "resolved" "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"

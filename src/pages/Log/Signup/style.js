@@ -12,12 +12,11 @@ export const Form = styled.form`
   margin-bottom: 4rem;
   &::after {
     content: "";
-    background-color: lightgray;
     position: absolute;
     height: 1px;
     width: 45rem;
     bottom: -2rem;
-    background-color: var(--b400);
+    background-color: var(--b700);
   }
 `;
 
@@ -36,8 +35,10 @@ export const Input = styled.input`
   font-weight: 300;
 
   &:focus {
-    border: 1px solid var(--purple);
-    box-shadow: 0 0 0 1px #705d9766;
+    border: 1px solid
+      ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--purple)")};
+    box-shadow: 0 0 0 1px
+      ${({ isOnError }) => (isOnError ? "#b0002066" : "#705d9766")};
   }
 
   &::placeholder {
@@ -97,7 +98,7 @@ export const SignBtn = styled.button`
 `;
 
 export const SpanError = styled.span`
-  color: red;
+  color: var(--blue);
   font-size: 1.6rem;
   font-weight: 300;
   user-select: none;
@@ -145,11 +146,11 @@ export const Content = styled.div`
 `;
 
 export const Login = styled(Link)`
-  color: var(--purple);
-  transition: color 0.3s;
+  color: var(--blue);
+  transition: filter 0.3s;
 
   &:hover {
-    color: var(--blue);
+    filter: brightness(1.2);
   }
 `;
 

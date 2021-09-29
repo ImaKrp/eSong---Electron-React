@@ -14,12 +14,11 @@ export const Header = styled.div`
 
   &::after {
     content: "";
-    background-color: lightgray;
+    background-color: var(--b700);
     position: absolute;
     height: 1px;
     width: 100vw;
     bottom: 0;
-    background-color: var(--b400);
   }
 
   p {

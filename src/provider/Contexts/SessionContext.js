@@ -59,15 +59,29 @@ export function SessionProvider({ children }) {
       name: `${Name}`,
       pic: ``,
     };
-    console.log(submit);
     await api.post("/accounts", submit);
 
     setSession(submit);
 
     if (RemindUser) changeLocalData({ formName: "@SoundCloud:User", submit });
-    else
-      window.sessionStorage.setItem("@SoundCloud:User", submit);
+    else window.sessionStorage.setItem("@SoundCloud:User", submit);
 
+    return true;
+  }
+
+  async function updateUser(email, pass, name, pic, id) {
+    if (pic === "https://") pic = "";
+
+    const submit = {
+      email: `${email}`,
+      pass: `${pass}`,
+      name: `${name}`,
+      pic: `${pic}`,
+    };
+
+    await api.put(`/accounts/${id}`, submit);
+    const { data } = await api.get(`/accounts/${id}`);
+    setSession(data);
     return true;
   }
 
@@ -78,6 +92,7 @@ export function SessionProvider({ children }) {
         AddAccount,
         LogOut,
         fetchAccounts,
+        updateUser,
         session,
       }}
     >

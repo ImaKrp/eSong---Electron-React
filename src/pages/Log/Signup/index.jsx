@@ -139,8 +139,6 @@ export const Signup = () => {
 
     if (error > 0) return;
 
-    setEmailError();
-    setPasswordError();
     const resp = await AddAccount(email, password, name, remindUser);
     if (resp !== true) {
       if (resp === "email") setEmailError("⨉ E-mail já cadastrado.");

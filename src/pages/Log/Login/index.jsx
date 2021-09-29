@@ -77,8 +77,6 @@ export const Login = () => {
 
     if (error > 0) return;
 
-    setEmailError();
-    setPasswordError();
     const resp = await CreateSession(email, password, remindUser);
     if (resp !== true) {
       if (resp === "email") setEmailError("⨉ E-mail não Cadastrado.");

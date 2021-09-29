@@ -30,6 +30,8 @@ export const Wrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
+  position: fixed;
+  top: 0;
 `;
 
 export const Container = styled.div`
