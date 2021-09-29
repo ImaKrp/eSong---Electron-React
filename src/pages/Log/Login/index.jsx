@@ -135,7 +135,7 @@ export const Login = () => {
       </Form>
       <Content>
         <SignUpSpan>Não tem uma conta?</SignUpSpan>
-        <SignUp to="/signup">Inscrever-se no SoundCloud</SignUp>
+        <SignUp to="/signup">Inscrever-se no CloudSound</SignUp>
       </Content>
     </>
   );
