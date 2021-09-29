@@ -19,10 +19,10 @@ import { Redirect } from "react-router-dom";
 export const Player = () => {
   const query = useQuery();
   const index = query.get("index");
+  const artistId = query.get("artistId");
   const [color, setColor] = useState();
   const [percentage, setPercentage] = useState(0);
   const { getSongByIndex, song } = useSong();
-
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -30,6 +30,7 @@ export const Player = () => {
 
   const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
   const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
+
   const audioRef = useRef();
 
   const getColor = useCallback(() => {
@@ -45,8 +46,8 @@ export const Player = () => {
   }, [getColor]);
 
   useEffect(() => {
-    getSongByIndex(index);
-  }, [getSongByIndex, index]);
+    getSongByIndex(artistId, index);
+  }, [getSongByIndex,artistId, index]);
 
   const onChange = (e) => {
     const audio = audioRef.current;
@@ -93,7 +94,7 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <Slider percentage={percentage ?? "1"} onChange={onChange} />
+          <Slider percentage={Number(percentage) ?? 0} onChange={onChange} />
           <audio
             ref={audioRef}
             src={song?.preview}
@@ -114,7 +115,7 @@ export const Player = () => {
             </span>
           </div>
           <Controlers>
-            <PrevSong to={`/song?index=${PrevIndex}`}>
+            <PrevSong to={`/song?artistId=${artistId}&index=${PrevIndex}`}>
               <img src="/icons/PrevSong.svg" alt="previousSong" />
             </PrevSong>
             <Play onClick={() => play(isPlaying)}>
@@ -123,7 +124,7 @@ export const Player = () => {
                 alt="playSong"
               />
             </Play>
-            <NextSong to={`/song?index=${NextIndex}`}>
+            <NextSong to={`/song?artistId=${artistId}&index=${NextIndex}`}>
               <img src="/icons/NextSong.svg" alt="nextSong" />
             </NextSong>
           </Controlers>
@@ -132,7 +133,9 @@ export const Player = () => {
       <Body color={color?.hex}>
         <Content></Content>
       </Body>
-      {redirectToNext === NextIndex && <Redirect to={`/song?index=${NextIndex}`} />}
+      {redirectToNext === NextIndex && (
+        <Redirect to={`/song?index=${NextIndex}`} />
+      )}
     </>
   );
 };

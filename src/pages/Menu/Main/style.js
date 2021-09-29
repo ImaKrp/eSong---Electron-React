@@ -4,7 +4,9 @@ import styled from "styled-components";
 export const Body = styled.div`
   width: 100vw;
   height: 100%;
-  padding: 32px 24px 0 24px;
+  padding: 14px 24px 0 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.div`
@@ -28,6 +30,6 @@ export const CardCont = styled.div`
 export const Artist = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 2rem;
+  padding-bottom: 1.3rem;
   user-select: none;
 `;

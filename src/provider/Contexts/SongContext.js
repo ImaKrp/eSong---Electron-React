@@ -5,19 +5,25 @@ const initialState = [];
 export const songContext = createContext(initialState);
 
 export function SongProvider({ children }) {
-  const [songs, setSongs] = useState([]);
+  const [songs] = useState([]);
   const [song, setSong] = useState({});
 
-  const fetchSongs = useCallback(async () => {
-    const { data } = await songApi.get("/search", {
-      params: { q: "Shawn Mendes" },
-    });
-    data.data.pop();
-    setSongs(data.data.splice(4, 6));
-  }, []);
+  const artists = ["Shawn Mendes", "Chri$tian Gate$"];
 
-  const getSongByIndex = (index) => {
-    setSong(songs[index]);
+  const fetchSongs = useCallback(async () => {
+    const artists = ["Shawn Mendes", "Chri$tian Gate$"];
+    artists.map(async (artist) => {
+      const { data } = await songApi.get("/search", {
+        params: { q: artist },
+      });
+      data.data.pop();
+      if (artist === "Shawn Mendes") songs[0] = data.data.splice(4, 6);
+      else songs[1] = data.data.splice(0, 6);
+    });
+  }, [songs]);
+
+  const getSongByIndex = (i, index) => {
+    setSong(songs[i][index]);
   };
 
   return (
@@ -27,6 +33,7 @@ export function SongProvider({ children }) {
         getSongByIndex,
         songs,
         song,
+        artists,
       }}
     >
       {children}

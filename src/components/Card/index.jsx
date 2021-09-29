@@ -7,7 +7,9 @@ export const Card = (props) => {
       <Wrapper>
         <ImageDiv>
           <Image src={props.image} />
-          <Play to={`/song?index=${props.index}`}>
+          <Play
+            to={`/song?artistId=${props.artistId}&index=${props.index}`}
+          >
             <img src="/icons/play.svg" alt="playSong" />
           </Play>
         </ImageDiv>
