@@ -8,7 +8,7 @@ export const Log = (props) => {
         <Header>
           <Logo src="/icons/icon.svg" alt="Logo" />
           <p>
-            CloudSound<span>®</span>
+          eSong<span>®</span>
           </p>
         </Header>
         {props.children}

@@ -13,7 +13,7 @@ export const sessionContext = createContext(initialState);
 export function SessionProvider({ children }) {
   const [Accounts, setAccounts] = useState([]);
   const [session, setSession] = useState(
-    getLocalData("@SoundCloud:User") ?? getSessionData("@SoundCloud:User")
+    getLocalData("@eSong:User") ?? getSessionData("@eSong:User")
   );
   const [genId, setGenId] = useState(0);
 
@@ -28,8 +28,8 @@ export function SessionProvider({ children }) {
   }, [Accounts.length]);
 
   function LogOut() {
-    localStorage.removeItem("@SoundCloud:User");
-    window.sessionStorage.removeItem("@SoundCloud:User");
+    localStorage.removeItem("@eSong:User");
+    window.sessionStorage.removeItem("@eSong:User");
     setSession();
   }
 
@@ -41,9 +41,9 @@ export function SessionProvider({ children }) {
     if (Login[0]) {
       setSession(Login[0]);
       if (RemindUser)
-        changeLocalData({ formName: "@SoundCloud:User", object: Login[0] });
+        changeLocalData({ formName: "@eSong:User", object: Login[0] });
       else
-        changeSessionData({ formName: "@SoundCloud:User", object: Login[0] });
+        changeSessionData({ formName: "@eSong:User", object: Login[0] });
       return true;
     }
 
@@ -71,8 +71,8 @@ export function SessionProvider({ children }) {
 
     setSession(submit);
 
-    if (RemindUser) changeLocalData({ formName: "@SoundCloud:User", submit });
-    else changeSessionData({ formName: "@SoundCloud:User", object: submit });
+    if (RemindUser) changeLocalData({ formName: "@eSong:User", submit });
+    else changeSessionData({ formName: "@eSong:User", object: submit });
 
     return true;
   }
@@ -92,9 +92,9 @@ export function SessionProvider({ children }) {
 
     setSession(submit);
 
-    if (getLocalData("@SoundCloud:User")) {
-      changeLocalData({ formName: "@SoundCloud:User", object: submit });
-    } else changeSessionData({ formName: "@SoundCloud:User", object: submit });
+    if (getLocalData("@eSong:User")) {
+      changeLocalData({ formName: "@eSong:User", object: submit });
+    } else changeSessionData({ formName: "@eSong:User", object: submit });
 
     return true;
   }

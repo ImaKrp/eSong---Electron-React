@@ -113,7 +113,7 @@ export const Signup = () => {
     }
 
     if (!email) {
-      setEmailError("⨉ Insira seu endereço de e-mail do SoundCloud.");
+      setEmailError("⨉ Insira seu endereço de e-mail do eSong.");
       error++;
     }
 

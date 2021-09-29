@@ -45,7 +45,7 @@ export const Login = () => {
   const handleEmailChange = (value) => {
     setEmail(value);
     setEmailError(
-      value ? "" : "⨉ Insira seu endereço de e-mail do SoundCloud."
+      value ? "" : "⨉ Insira seu endereço de e-mail do eSong."
     );
   };
 
@@ -71,7 +71,7 @@ export const Login = () => {
     }
 
     if (!email) {
-      setEmailError("⨉ Insira seu endereço de e-mail do SoundCloud.");
+      setEmailError("⨉ Insira seu endereço de e-mail do eSong.");
       error++;
     }
 
@@ -135,7 +135,7 @@ export const Login = () => {
       </Form>
       <Content>
         <SignUpSpan>Não tem uma conta?</SignUpSpan>
-        <SignUp to="/signup">Inscrever-se no CloudSound</SignUp>
+        <SignUp to="/signup">Inscrever-se no eSong</SignUp>
       </Content>
     </>
   );

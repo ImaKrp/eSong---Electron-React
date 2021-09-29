@@ -1,11 +1,11 @@
 {
-  "name": "cloudsound",
+  "name": "esong",
   "version": "0.1.0",
-  "description": "Simple CloudSound app with React",
+  "description": "Simple eSong app with React",
   "author": "willjw3",
   "build": {
-    "appId": "cloudsound",
-    "productName": "cloudsound",
+    "appId": "esong",
+    "productName": "esong",
     "mac": {
       "icon": "public/logo512.png",
       "target": "tar.gz"

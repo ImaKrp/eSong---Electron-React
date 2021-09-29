@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to CloudSound. </h1>
+<h1 align="center">Welcome to eSong. </h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000" />
   
@@ -13,9 +13,9 @@
   </a>
 </p>
 
-> kind of a spotify (on going)
+> Simple Song Player using Public API
 
-### 🏠 [Homepage](https://github.com/ImaKrp/BicicletariaReact)
+### 🏠 [Homepage](https://github.com/ImaKrp/eSong---Electron-React)
 
 ## Requirements
 
@@ -65,4 +65,4 @@ Give a ⭐️ if this project helped you somehow!
 ## 📝 License
 
 Copyright © 2021 [Júlio Carvalho Gonçalves](https://github.com/ImaKrp).<br />
-This project is [MIT](https://github.com/ImaKrp/CloudSound/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/ImaKrp/eSong---Electron-React/blob/master/LICENSE) licensed.
