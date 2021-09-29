@@ -23,28 +23,20 @@ export const Form = styled.form`
 export const Input = styled.input`
   width: 45rem;
   height: 4rem;
+  background-color: var(--b700);
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  padding: 0.6rem 1.2rem;
-  font-size: 1.6rem;
-  border: 1px solid
-    ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--b200)")};
-  background-color: var(--b100);
   color: var(--w200);
-  transition: border 0.3s, box-shadow 0.3s;
-  font-weight: 300;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid
+    ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--b700)")};
+  transition: border 0.3s;
 
   &:focus {
     border: 1px solid
-      ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--purple)")};
-    box-shadow: 0 0 0 1px
-      ${({ isOnError }) => (isOnError ? "#b0002066" : "#705d9766")};
-  }
-
-  &::placeholder {
-    color: var(--w400);
-    font-weight: 300;
-    user-select: none;
+      ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--b500)")};
   }
 `;
 
@@ -151,6 +143,7 @@ export const Login = styled(Link)`
 
   &:hover {
     filter: brightness(1.2);
+    text-decoration: underline;
   }
 `;
 

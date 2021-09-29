@@ -238,8 +238,7 @@ export const Signup = () => {
       </Form>
       <Content>
         <LoginSpan>
-          Já tem uma conta?
-          <Login to="/login"> Faça login</Login>.
+          Já tem uma conta? <Login to="/login">Faça login</Login>.
         </LoginSpan>
       </Content>
     </>

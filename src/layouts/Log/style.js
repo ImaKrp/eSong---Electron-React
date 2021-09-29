@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.div`
   width: 100vw;
-  height: 8rem;
+  height: 6rem;
   margin-bottom: 3rem;
   position: relative;
   display: flex;
@@ -14,21 +14,21 @@ export const Header = styled.div`
 
   p {
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 4rem;
+    font-size: 3.3rem;
     user-select: none;
   }
 
   span {
     font-family: "Lato", sans-serif;
-    font-size: 1.8rem;
-    top: 33%;
+    font-size: 1.6rem;
+    top: 25%;
     position: absolute;
     user-select: none;
   }
 `;
 
 export const Logo = styled.img`
-  width: 4rem;
+  width: 3rem;
   user-select: none;
 `;
 
