@@ -50,7 +50,7 @@ export const Infos = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-    color: ${({ light }) => (light ? "var(--black)" : "var(--white)")};
+    color: var(--white);
     font-weight: 700;
     font-size: 7rem;
     padding-bottom: 1.5rem;
@@ -87,7 +87,7 @@ export const EditName = styled.button`
   cursor: pointer;
   background-color: transparent;
   height: 3rem;
-  margin-top: 4rem;
+  margin-top: 3.5rem;
   img {
     width: 4rem;
   }

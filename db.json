@@ -11,7 +11,7 @@
       "id": "2",
       "email": "123@gmail.com",
       "pass": "123",
-      "name": "123",
+      "name": "Animal",
       "pic": "https://64.media.tumblr.com/d7e403c2872bc736ea338c73386b9086/944201760a2ec171-83/s1280x1920/17ae87c202fdeb2f8ce596db0d24f4ddd229a823.jpg"
     },
     {
@@ -26,7 +26,14 @@
       "email": "jefteneto@gmail.com",
       "pass": "Nomade2002",
       "name": "Jets",
-      "pic": ""
+      "pic": "https://pbs.twimg.com/media/EwWnQLpXIAIzbtB.jpg"
+    },
+    {
+      "id": "5",
+      "email": "luisgataodono@gmail.com",
+      "pass": "123456",
+      "name": "Zanetini",
+      "pic": "https://64.media.tumblr.com/07b085bfd114a540b07d286da1e8c230/b72d9fbf6fe72d19-38/s1280x1920/de5910f392441d8874f6c63c39baed86df167043.jpg"
     }
   ]
 }

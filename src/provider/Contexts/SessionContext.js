@@ -17,6 +17,10 @@ export function SessionProvider({ children }) {
   );
   const [genId, setGenId] = useState(0);
 
+  function upperFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  }
+
   const fetchAccounts = useCallback(async () => {
     const { data } = await api.get("/accounts");
     setAccounts(data);
@@ -54,11 +58,13 @@ export function SessionProvider({ children }) {
 
     if (erro > 0) return "email";
 
+    const name = upperFirstLetter(Name);
+
     const submit = {
       id: `${genId}`,
       email: `${Email}`,
       pass: `${Pass}`,
-      name: `${Name}`,
+      name: `${name}`,
       pic: ``,
     };
     await api.post("/accounts", submit);
@@ -73,12 +79,12 @@ export function SessionProvider({ children }) {
 
   async function updateUser(email, pass, name, pic, id) {
     if (pic === "https://") pic = "";
-
+    const Name = upperFirstLetter(name);
     const submit = {
       id: `${id}`,
       email: `${email}`,
       pass: `${pass}`,
-      name: `${name}`,
+      name: `${Name}`,
       pic: `${pic}`,
     };
 
