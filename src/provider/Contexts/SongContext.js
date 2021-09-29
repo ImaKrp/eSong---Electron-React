@@ -16,16 +16,15 @@ export function SongProvider({ children }) {
     setSongs(data.data.splice(4, 6));
   }, []);
 
-  async function getSongById(id) {
-    const { data } = await songApi.get(`/track/${id}`);
-    setSong(data);
-  }
+  const getSongByIndex = (index) => {
+    setSong(songs[index]);
+  };
 
   return (
     <songContext.Provider
       value={{
         fetchSongs,
-        getSongById,
+        getSongByIndex,
         songs,
         song,
       }}

@@ -10,7 +10,6 @@ export const Main = () => {
     try {
       await fetchSongs();
     } catch (err) {
-      console.log(err.toString());
     }
   }, [fetchSongs]);
 
@@ -30,6 +29,7 @@ export const Main = () => {
                 return (
                   <Card
                     key={index}
+                    index={index}
                     id={song.id}
                     name={song.title_short}
                     image={song.album.cover_medium}

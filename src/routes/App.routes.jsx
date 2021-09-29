@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import { Main } from "../pages/Menu/Main";
 import { Profile } from "../pages/Menu/Profile";
+import { Player } from "../pages/Player";
 import { Menu } from "../layouts/Menu";
 
 export function AppRoutes() {
@@ -15,18 +16,18 @@ export function AppRoutes() {
       <Redirect from="*" to="/" />
       <Switch>
         <Route exact path="/">
-          <Menu>
+          <Menu background={true}>
             <Main />
           </Menu>
         </Route>
         <Route exact path="/profile">
-          <Menu>
+          <Menu background={true}>
             <Profile />
           </Menu>
         </Route>
         <Route exact path="/song">
-          <Menu>
-            <Profile />
+          <Menu background={false}>
+            <Player />
           </Menu>
         </Route>
       </Switch>

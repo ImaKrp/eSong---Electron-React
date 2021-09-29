@@ -14,7 +14,7 @@ import {
 } from "./style";
 import { useSession } from "../../hooks/useSession";
 
-export const Header = () => {
+export const Header = (props) => {
   const { LogOut, session } = useSession();
   const [active, setActive] = useState(false);
 
@@ -29,7 +29,7 @@ export const Header = () => {
 
   return (
     <>
-      <Wrapper>
+      <Wrapper background={props.background}>
         <Container>
           <Home to="/">
             <img src="/icons/home.svg" alt="goToHome" />

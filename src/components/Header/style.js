@@ -25,14 +25,15 @@ export const LogBtn = styled.button`
 export const Wrapper = styled.header`
   width: 100vw;
   height: 5rem;
-  background-color: var(--black);
+  background-color: ${({ background }) =>
+    background ? `var(--black)` : "transparent"};
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 5;
 `;
 
 export const Container = styled.div`
