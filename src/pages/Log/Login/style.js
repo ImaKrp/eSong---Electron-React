@@ -29,7 +29,7 @@ export const Input = styled.input`
   align-items: center;
   color: var(--w200);
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 1.6rem;
   border: 1px solid
     ${({ isOnError }) => (isOnError ? "var(--red)" : "var(--b700)")};
   transition: border 0.3s;
