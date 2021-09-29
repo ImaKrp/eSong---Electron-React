@@ -41,7 +41,7 @@ export const Content = styled.div`
 
 export const ModalWrapper = styled.div`
   width: 33rem;
-  height: 60rem;
+  height: 55rem;
   background-color: var(--b100);
   position: absolute;
   z-index: 5;
@@ -59,17 +59,20 @@ export const ModalWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    height: 10.4rem;
     h3 {
       font-size: 2.2rem;
       font-weight: bold;
       color: var(--white);
       max-width: 100%;
+      flex: 1;
     }
     span {
       font-size: 1.6rem;
       font-weight: thin;
       color: #7c7c7c;
       margin-bottom: 2.4rem;
+      flex: 1;
     }
   }
 
@@ -92,24 +95,6 @@ export const Image = styled.img`
   border-radius: 0.4rem;
   margin-bottom: 2.4rem;
   box-shadow: 0px 2px 15px -3px #000000bf;
-`;
-
-export const SliderWrapper = styled.div`
-  width: 100%;
-  border-radius: 0.4rem;
-  box-shadow: 0px 2px 15px -3px #000000bf;
-  height: 0.4rem;
-  width: 100%;
-  background-color: var(--b700);
-  position: relative;
-`;
-
-export const Slider = styled.div`
-  width: 25%;
-  height: 100%;
-  border-radius: 0.4rem;
-  background-color: var(--blue);
-  position: absolute;
 `;
 
 export const Play = styled.button`

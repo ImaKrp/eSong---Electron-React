@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import {
   Body,
   Content,
   PlayerWrapper,
   ModalWrapper,
   Image,
-  SliderWrapper,
-  Slider,
   Play,
   NextSong,
   PrevSong,
@@ -15,12 +13,22 @@ import {
 import { useQuery } from "../../hooks/useQuery";
 import FastAverageColor from "fast-average-color";
 import { useSong } from "../../hooks/useSong";
+import { Slider } from "../../components/Slider";
 
 export const Player = () => {
   const query = useQuery();
   const index = query.get("index");
   const [color, setColor] = useState();
+  const [percentage, setPercentage] = useState(0);
   const { getSongByIndex, song } = useSong();
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
+  const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
+  const audioRef = useRef();
 
   const getColor = useCallback(() => {
     if (!song?.album?.cover_medium) return;
@@ -38,6 +46,38 @@ export const Player = () => {
     getSongByIndex(index);
   }, [getSongByIndex, index]);
 
+  const onChange = (e) => {
+    const audio = audioRef.current;
+    audio.currentTime = (audio.duration / 100) * e.target.value;
+    setPercentage(e.target.value);
+  };
+
+  const getCurrDuration = (e) => {
+    const percent = (
+      (e.currentTarget.currentTime / e.currentTarget.duration) *
+      100
+    ).toFixed(2);
+    const time = e.currentTarget.currentTime;
+
+    setPercentage(+percent);
+    setCurrentTime(time.toFixed(2));
+  };
+
+  const play = () => {
+    const audio = audioRef.current;
+    audio.volume = 0.1;
+
+    if (!isPlaying) {
+      setIsPlaying(true);
+      audio.play();
+    }
+
+    if (isPlaying) {
+      setIsPlaying(false);
+      audio.pause();
+    }
+  };
+
   return (
     <>
       <PlayerWrapper>
@@ -47,21 +87,42 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <SliderWrapper>
-            <Slider />
-          </SliderWrapper>
+          <Slider percentage={percentage} onChange={onChange} />
+          <audio
+            ref={audioRef}
+            src={song?.preview}
+            onTimeUpdate={getCurrDuration}
+            onLoadedData={(e) => {
+              setDuration(e.currentTarget.duration.toFixed(2));
+            }}
+          ></audio>
           <div className="row">
-            <span>0:00</span>
-            <span>0:30</span>
+            <span>
+              {currentTime !== 0
+                ? currentTime.toString().replace(".", ":")
+                : `0:00`}
+            </span>
+            <span>
+              {duration !== 0 ? duration.toString().replace(".", ":") : `00:00`}
+            </span>
           </div>
           <Controlers>
-            <PrevSong>
+            <PrevSong
+              to={`/song?index=${PrevIndex}`}
+              onClick={() => setIsPlaying(false)}
+            >
               <img src="/icons/PrevSong.svg" alt="previousSong" />
             </PrevSong>
-            <Play>
-              <img src="/icons/play.svg" alt="playSong" />
+            <Play onClick={() => play()}>
+              <img
+                src={isPlaying ? "/icons/pause.svg" : "/icons/play.svg"}
+                alt="playSong"
+              />
             </Play>
-            <NextSong>
+            <NextSong
+              to={`/song?index=${NextIndex}`}
+              onClick={() => setIsPlaying(false)}
+            >
               <img src="/icons/NextSong.svg" alt="nextSong" />
             </NextSong>
           </Controlers>
