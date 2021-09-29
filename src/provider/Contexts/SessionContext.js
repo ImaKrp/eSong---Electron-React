@@ -80,8 +80,11 @@ export function SessionProvider({ children }) {
     };
 
     await api.put(`/accounts/${id}`, submit);
-    const { data } = await api.get(`/accounts/${id}`);
-    setSession(data);
+    setSession(submit);
+
+    if (getLocalData("@SoundCloud:User")) changeLocalData({ formName: "@SoundCloud:User", submit });
+    else window.sessionStorage.setItem("@SoundCloud:User", submit);
+
     return true;
   }
 
