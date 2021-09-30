@@ -65,4 +65,4 @@ Give a ⭐️ if this project helped you somehow!
 ## 📝 License
 
 Copyright © 2021 [Júlio Carvalho Gonçalves](https://github.com/ImaKrp).<br />
-This project is [MIT](https://github.com/ImaKrp/eSong---Electron-React/blob/master/LICENSE) licensed.
+This project is [GNU General Public License v3.0](https://github.com/ImaKrp/eSong---Electron-React/blob/master/LICENSE) licensed.
