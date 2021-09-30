@@ -11,7 +11,15 @@ const initialState = [];
 export const sessionContext = createContext(initialState);
 
 export function SessionProvider({ children }) {
-  const [Accounts, setAccounts] = useState([]);
+  const [Accounts, setAccounts] = useState([
+    {
+      id: 1,
+      email: "teste@gmail.com",
+      pass: "123",
+      name: "Teste",
+      pic: "https://64.media.tumblr.com/7031561507aa20b65087c7812ace806c/ea95d609d48498c5-e5/s2048x3072/e948e9677edaa3caed15be26dff8d21b11624546.jpg",
+    },
+  ]);
   const [session, setSession] = useState(
     getLocalData("@eSong:User") ?? getSessionData("@eSong:User")
   );
