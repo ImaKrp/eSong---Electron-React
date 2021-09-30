@@ -6,7 +6,7 @@ export const Card = (props) => {
     "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
   return (
     <>
-      <Wrapper to={`/song?artistId=${props.artistId}&index=${props.index}`}>
+      <Wrapper>
         <ImageDiv>
           <Image src={props.image} />
           <Play to={`/song?artistId=${props.artistId}&index=${props.index}`}>

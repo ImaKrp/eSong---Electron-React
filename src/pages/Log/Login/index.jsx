@@ -60,7 +60,6 @@ export const Login = () => {
     const serverStatus = await testServer();
     if (serverStatus) {
       setServerError("Error: Couldn't Connect to Server http://localhost:8000");
-      return;
     }
 
     let error = 0;
