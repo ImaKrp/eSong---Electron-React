@@ -33,6 +33,5 @@ export const Artist = styled.div`
   flex-direction: column;
   padding-bottom: 1.3rem;
   max-width: 1200px;
-  width: 1200px;
   user-select: none;
 `;
