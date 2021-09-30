@@ -8,6 +8,7 @@ export const Body = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 1.3rem;
 `;
 
 export const Title = styled.div`

@@ -58,6 +58,9 @@ export const Modal = (props) => {
     props.onClick()
   };
 
+  const imgPath =
+  "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
+
   return (
     <>
       {props.active && (
@@ -67,7 +70,7 @@ export const Modal = (props) => {
               <div className="row first">
                 <span>Detalhes do perfil</span>
                 <CloseBtn onClick={props.onClick}>
-                  <img src="/icons/close.svg" alt="closeModal" />
+                  <img src={`${imgPath}close.svg`} alt="closeModal" />
                 </CloseBtn>
               </div>
               <div className="row last">
@@ -79,7 +82,7 @@ export const Modal = (props) => {
                       ) : (
                         <Image
                           size="65%"
-                          src="/icons/user.svg"
+                          src={`${imgPath}user.svg`}
                           alt="genUserImg"
                         />
                       )}
@@ -95,7 +98,7 @@ export const Modal = (props) => {
                           ) : (
                             <Image
                               size="65%"
-                              src="/icons/user.svg"
+                              src={`${imgPath}user.svg`}
                               alt="genUserImg"
                             />
                           )}

@@ -22,6 +22,14 @@ function createWindow() {
   mainWindow.on("maximize", () => {
     mainWindow.unmaximize();
   });
+
+  mainWindow.setMenuBarVisibility(false);
+
+  mainWindow.on("app-command", (e, cmd) => {
+    if (cmd === "browser-backward" || cmd === "browser-forward") {
+      e.preventDefault();
+    }
+  });
 }
 
 app.on("ready", createWindow);

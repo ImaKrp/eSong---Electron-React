@@ -116,6 +116,9 @@ export const Player = () => {
     }
   };
 
+  const imgPath =
+    "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
+
   return (
     <>
       <PlayerWrapper>
@@ -147,32 +150,32 @@ export const Player = () => {
           </div>
           <Controlers>
             <PrevSong to={`/song?artistId=${artistId}&index=${PrevIndex}`}>
-              <img src="/icons/PrevSong.svg" alt="previousSong" />
+              <img src={`${imgPath}PrevSong.svg`} alt="previousSong" />
             </PrevSong>
             <Play onClick={() => play(isPlaying)}>
               <img
-                src={isPlaying ? "/icons/pause.svg" : "/icons/play.svg"}
+                src={isPlaying ? `${imgPath}pause.svg` : `${imgPath}play.svg`}
                 alt="playSong"
               />
             </Play>
             <NextSong to={`/song?artistId=${artistId}&index=${NextIndex}`}>
-              <img src="/icons/NextSong.svg" alt="nextSong" />
+              <img src={`${imgPath}NextSong.svg`} alt="nextSong" />
             </NextSong>
             <Volume
               onClick={(e) => handleVolume(e)}
               onContextMenu={(e) => handleVolume(e)}
             >
               {volume === 0.05 && (
-                <img src="/icons/sound/low.svg" alt="lowAudio" />
+                <img src={`${imgPath}/sound/low.svg`} alt="lowAudio" />
               )}
               {volume === 0.1 && (
-                <img src="/icons/sound/medium.svg" alt="mediumAudio" />
+                <img src={`${imgPath}/sound/medium.svg`} alt="mediumAudio" />
               )}
               {volume >= 0.15 && (
-                <img src="/icons/sound/high.svg" alt="highAudio" />
+                <img src={`${imgPath}/sound/high.svg`} alt="highAudio" />
               )}
               {volume === 0 && (
-                <img src="/icons/sound/muted.svg" alt="mutedAudio" />
+                <img src={`${imgPath}/sound/muted.svg`} alt="mutedAudio" />
               )}
             </Volume>
           </Controlers>
