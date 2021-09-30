@@ -36,7 +36,7 @@ export const Image = styled.img`
   box-shadow: 0px 2px 15px -3px #000000bf;
 `;
 
-export const Wrapper = styled.header`
+export const Wrapper = styled.div`
   width: 18rem;
   height: 25rem;
   background-color: var(--b600);

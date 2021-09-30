@@ -164,4 +164,23 @@ export const Controlers = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2.3rem;
+  position: relative;
+`;
+
+export const Volume = styled.button`
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: transform 0.3s;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+
+  img {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
 `;

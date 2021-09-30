@@ -6,6 +6,7 @@ export const Body = styled.div`
   height: 100%;
   padding: 14px 24px 0 24px;
   display: flex;
+  align-items: center;
   flex-direction: column;
 `;
 
@@ -31,5 +32,6 @@ export const Artist = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 1.3rem;
+  max-width: 1200px;
   user-select: none;
 `;

@@ -9,6 +9,7 @@ import {
   NextSong,
   PrevSong,
   Controlers,
+  Volume,
 } from "./style";
 import { useQuery } from "../../hooks/useQuery";
 import FastAverageColor from "fast-average-color";
@@ -28,6 +29,8 @@ export const Player = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [redirectToNext, setRedirectToNext] = useState(false);
 
+  const [volume, setVolume] = useState(0.05);
+
   const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
   const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
 
@@ -46,8 +49,9 @@ export const Player = () => {
   }, [getColor]);
 
   useEffect(() => {
-    getSongByIndex(artistId, index);
-  }, [getSongByIndex,artistId, index]);
+    if (getSongByIndex(artistId, index) === false)
+      return <Redirect to="/profile" />;
+  }, [getSongByIndex, artistId, index]);
 
   const onChange = (e) => {
     const audio = audioRef.current;
@@ -72,7 +76,7 @@ export const Player = () => {
 
   const play = (isPlaying) => {
     const audio = audioRef.current;
-    audio.volume = 0.1;
+    audio.volume = volume;
 
     if (!isPlaying) {
       setIsPlaying(true);
@@ -82,6 +86,30 @@ export const Player = () => {
     if (isPlaying) {
       setIsPlaying(false);
       audio.pause();
+    }
+  };
+
+  const handleVolume = (e) => {
+    const audio = audioRef.current;
+    let volumeLet = 0;
+
+    if (e.button === 0) {
+      if (volume === 0.15) return;
+      if (volume === 0.1) volumeLet = 0.15;
+      if (volume === 0.05) volumeLet = 0.1;
+      if (volume === 0) volumeLet = 0.05;
+
+      audio.volume = volumeLet;
+      setVolume(volumeLet);
+    }
+    if (e.button === 2) {
+      if (volume === 0.15) volumeLet = 0.1;
+      if (volume === 0.1) volumeLet = 0.05;
+      if (volume === 0.05) volumeLet = 0;
+      if (volume === 0) return;
+
+      audio.volume = volumeLet;
+      setVolume(volumeLet);
     }
   };
 
@@ -127,6 +155,23 @@ export const Player = () => {
             <NextSong to={`/song?artistId=${artistId}&index=${NextIndex}`}>
               <img src="/icons/NextSong.svg" alt="nextSong" />
             </NextSong>
+            <Volume
+              onClick={(e) => handleVolume(e)}
+              onContextMenu={(e) => handleVolume(e)}
+            >
+              {volume === 0.05 && (
+                <img src="/icons/sound/low.svg" alt="lowAudio" />
+              )}
+              {volume === 0.1 && (
+                <img src="/icons/sound/medium.svg" alt="mediumAudio" />
+              )}
+              {volume >= 0.15 && (
+                <img src="/icons/sound/high.svg" alt="highAudio" />
+              )}
+              {volume === 0 && (
+                <img src="/icons/sound/muted.svg" alt="mutedAudio" />
+              )}
+            </Volume>
           </Controlers>
         </ModalWrapper>
       </PlayerWrapper>
