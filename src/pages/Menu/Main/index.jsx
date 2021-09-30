@@ -1,13 +1,17 @@
 import React, { useCallback, useEffect } from "react";
 import { useSong } from "../../../hooks/useSong";
+import { useQuery } from "../../../hooks/useQuery";
 import { Body, Title, CardCont, Artist } from "./style";
 import { Card } from "../../../components/Card";
+import { Redirect } from "react-router-dom";
 
 export const Main = () => {
+  const query = useQuery();
   const { fetchSongs, songs, artists } = useSong();
   const getSongs = useCallback(async () => {
     await fetchSongs();
   }, [fetchSongs]);
+  const redirect = query.get("redirect");
 
   useEffect(() => {
     getSongs();
@@ -46,6 +50,7 @@ export const Main = () => {
             );
           })}
       </Body>
+      {redirect && <Redirect to={`/${redirect}`} />}
     </>
   );
 };

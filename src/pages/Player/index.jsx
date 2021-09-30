@@ -28,6 +28,7 @@ export const Player = () => {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [redirectToNext, setRedirectToNext] = useState(false);
+  const [songError, setSongError] = useState(false);
 
   const [volume, setVolume] = useState(0.05);
 
@@ -49,8 +50,7 @@ export const Player = () => {
   }, [getColor]);
 
   useEffect(() => {
-    if (getSongByIndex(artistId, index) === false)
-      return <Redirect to="/profile" />;
+    if (getSongByIndex(artistId, index) === true) setSongError(true);
   }, [getSongByIndex, artistId, index]);
 
   const onChange = (e) => {
@@ -181,6 +181,7 @@ export const Player = () => {
       {redirectToNext === NextIndex && (
         <Redirect to={`/song?artistId=${artistId}&index=${NextIndex}`} />
       )}
+      {songError && <Redirect to="/?redirect=profile" />}
     </>
   );
 };

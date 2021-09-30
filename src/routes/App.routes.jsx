@@ -17,7 +17,7 @@ export function AppRoutes() {
   return (
     <Router>
       <Redirect from="*" to="/" />
-      {isLoggedIn && <Redirect to="/profile" />}
+      {isLoggedIn && <Redirect to="/?redirect=profile" />}
       <Switch>
         <Route exact path="/">
           <Menu background={true}>

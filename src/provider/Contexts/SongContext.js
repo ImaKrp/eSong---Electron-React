@@ -24,7 +24,11 @@ export function SongProvider({ children }) {
 
   const getSongByIndex = (i, index) => {
     if (!i || !index) return false;
-    setSong(songs[i][index]);
+    try {
+      setSong(songs[i][index]);
+    } catch {
+      return true;
+    }
   };
 
   return (
