@@ -16,6 +16,7 @@ import FastAverageColor from "fast-average-color";
 import { useSong } from "../../hooks/useSong";
 import { Slider } from "../../components/Slider";
 import { Redirect } from "react-router-dom";
+import { Sound } from "../../svg/index";
 
 export const Player = () => {
   const query = useQuery();
@@ -128,7 +129,10 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <Slider percentage={percentage.toString() ?? '0'} onChange={onChange} />
+          <Slider
+            percentage={percentage.toString() ?? "0"}
+            onChange={onChange}
+          />
           <audio
             ref={audioRef}
             src={song?.preview}
@@ -166,16 +170,16 @@ export const Player = () => {
               onContextMenu={(e) => handleVolume(e)}
             >
               {volume === 0.05 && (
-                <img src={`${imgPath}/sound/low.svg`} alt="lowAudio" />
+                <Sound level={1}/>
               )}
               {volume === 0.1 && (
-                <img src={`${imgPath}/sound/medium.svg`} alt="mediumAudio" />
+                <Sound level={2}/>
               )}
               {volume >= 0.15 && (
-                <img src={`${imgPath}/sound/high.svg`} alt="highAudio" />
+                <Sound level={3}/>
               )}
               {volume === 0 && (
-                <img src={`${imgPath}/sound/muted.svg`} alt="mutedAudio" />
+                <Sound level={0}/>
               )}
             </Volume>
           </Controlers>

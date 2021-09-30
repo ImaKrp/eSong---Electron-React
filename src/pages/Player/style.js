@@ -179,7 +179,7 @@ export const Volume = styled.button`
   position: absolute;
   right: 0;
 
-  img {
+  svg {
     width: 2.1rem;
     height: 2.1rem;
   }
