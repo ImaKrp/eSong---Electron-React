@@ -47,6 +47,8 @@ Start Json Server:
 json-server --watch db.json --port 8000
 ```
 
+(Or use the default account, email: teste@gmail.com; pass: 123. You can use it even the server is off.)
+
 ## 📑 Modifying Database
 
 You can modify the db.json.
