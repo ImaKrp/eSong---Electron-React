@@ -1,8 +1,8 @@
 {
   "name": "esong",
   "version": "0.1.0",
-  "description": "Simple eSong app with React",
-  "author": "willjw3",
+  "description": "eSong simple song player with public API.",
+  "author": "imakrp",
   "build": {
     "appId": "esong",
     "productName": "esong",
@@ -11,16 +11,16 @@
       "target": "tar.gz"
     },
     "linux": {
-      "category": "Utils",
+      "category": "Music",
       "icon": "public/icon.png",
-      "packageCategory": "utils",
-      "maintainer": "your name <your email>",
+      "packageCategory": "music",
+      "maintainer": "Julio Gonçalves <imakrp@gmail.com>",
       "asar": true,
       "target": [
         "deb",
         "tar.xz"
       ],
-      "synopsis": "Basically same as description but shorter"
+      "synopsis": "eSong simple song player with public API."
     },
     "win": {
       "icon": "public/icon.png",
