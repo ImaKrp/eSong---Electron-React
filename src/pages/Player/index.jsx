@@ -34,8 +34,11 @@ export const Player = () => {
 
   const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
   const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
-
   const audioRef = useRef();
+
+  useEffect(() => {
+    setRedirectToNext(false)
+  })
 
   const getColor = useCallback(() => {
     if (!song?.album?.cover_medium) return;
@@ -70,7 +73,7 @@ export const Player = () => {
     setCurrentTime(time.toFixed(2));
     if (Number(time) !== 0)
       if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
-        setRedirectToNext(NextIndex);
+        setRedirectToNext(true);
       }
   };
 
@@ -178,7 +181,7 @@ export const Player = () => {
       <Body color={color?.hex}>
         <Content></Content>
       </Body>
-      {redirectToNext === NextIndex && (
+      {redirectToNext && (
         <Redirect to={`/song?artistId=${artistId}&index=${NextIndex}`} />
       )}
       {songError && <Redirect to="/?redirect=profile" />}
