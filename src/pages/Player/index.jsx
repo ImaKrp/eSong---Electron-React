@@ -37,8 +37,8 @@ export const Player = () => {
   const audioRef = useRef();
 
   useEffect(() => {
-    setRedirectToNext(false)
-  })
+    if (redirectToNext) setRedirectToNext(false);
+  }, [redirectToNext]);
 
   const getColor = useCallback(() => {
     if (!song?.album?.cover_medium) return;
