@@ -12,11 +12,12 @@ import { Menu } from "../layouts/Menu";
 import {useSession} from '../hooks/useSession'
 
 export function AppRoutes() {
-  const {logged} = useSession()
+  const {session} = useSession()
+  const isLoggedIn = session;
   return (
     <Router>
       <Redirect from="*" to="/" />
-      {logged &&  <Redirect to="/profile" />}
+      {isLoggedIn && <Redirect to="/profile" />}
       <Switch>
         <Route exact path="/">
           <Menu background={true}>
