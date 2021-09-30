@@ -128,7 +128,7 @@ export const Player = () => {
             <h3>{song?.title}</h3>
             <span>{song?.artist?.name}</span>
           </div>
-          <Slider percentage={Number(percentage) ?? 0} onChange={onChange} />
+          <Slider percentage={percentage.toString() ?? '0'} onChange={onChange} />
           <audio
             ref={audioRef}
             src={song?.preview}
