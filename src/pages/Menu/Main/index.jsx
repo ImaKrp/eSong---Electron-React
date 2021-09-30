@@ -13,6 +13,8 @@ export const Main = () => {
   }, [fetchSongs]);
   const redirect = query.get("redirect");
 
+  let cont = 0;
+
   useEffect(() => {
     getSongs();
   }, [getSongs]);
@@ -23,26 +25,24 @@ export const Main = () => {
         {artists &&
           artists.map((artist, i) => {
             return (
-              <Artist key={i}>
-                <Title>{artist}</Title>
+              <Artist key={cont++}>
+                <Title key={cont++}>{artist}</Title>
 
-                <CardCont>
+                <CardCont key={cont++}>
                   {songs &&
                     songs[i]
                       ?.filter((song) => song?.artist?.name === artist)
                       ?.map((song, index) => {
                         return (
-                          <>
-                            <Card
-                              key={index}
-                              index={index}
-                              id={song?.id}
-                              name={song?.title_short}
-                              image={song?.album.cover_medium}
-                              artist={song?.artist.name}
-                              artistId={i}
-                            />
-                          </>
+                          <Card
+                            key={song.id}
+                            index={index}
+                            id={song?.id}
+                            name={song?.title_short}
+                            image={song?.album.cover_medium}
+                            artist={song?.artist.name}
+                            artistId={i}
+                          />
                         );
                       })}
                 </CardCont>
