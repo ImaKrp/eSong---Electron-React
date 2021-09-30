@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const ImageDiv = styled.div`
   width: 18rem;
@@ -79,6 +79,9 @@ export const Content = styled.div`
   left: 0;
   top: 30rem;
   background-color: rgba(0, 0, 0, 0.33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const EditName = styled.button`
@@ -114,5 +117,27 @@ export const EditImage = styled.button`
   user-select: none;
   img {
     width: 6rem;
+  }
+`;
+
+export const GoToMenu = styled(Link)`
+  width: 27.5rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2.4rem;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  background-color: var(--w200);
+  transition: background-color 0.3s;
+  color: var(--black);
+  transition: background-color 0.3s;
+  user-select: none;
+
+  &:hover {
+    background-color: var(--white);
   }
 `;

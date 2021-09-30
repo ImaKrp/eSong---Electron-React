@@ -134,7 +134,7 @@ export const Player = () => {
         <Content></Content>
       </Body>
       {redirectToNext === NextIndex && (
-        <Redirect to={`/song?index=${NextIndex}`} />
+        <Redirect to={`/song?artistId=${artistId}&index=${NextIndex}`} />
       )}
     </>
   );

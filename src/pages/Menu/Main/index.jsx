@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useSong } from "../../../hooks/useSong";
 import { Body, Title, CardCont, Artist } from "./style";
 import { Card } from "../../../components/Card";
 
 export const Main = () => {
   const { fetchSongs, songs, artists } = useSong();
-  const [loaded, setLoaded] = useState(false);
-
   const getSongs = useCallback(async () => {
     await fetchSongs();
   }, [fetchSongs]);
@@ -15,16 +13,10 @@ export const Main = () => {
     getSongs();
   }, [getSongs]);
 
-  useEffect(() => {
-    setLoaded(songs?.length === 2 ? true : false);
-    if(loaded)
-    console.log('a')
-  }, [songs]);
-
   return (
     <>
       <Body>
-        {loaded &&
+        {artists &&
           artists.map((artist, i) => {
             return (
               <Artist key={i}>

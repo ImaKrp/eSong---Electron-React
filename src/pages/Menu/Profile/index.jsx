@@ -8,15 +8,15 @@ import {
   Content,
   EditName,
   EditImage,
+  GoToMenu,
 } from "./style";
-import {Modal} from '../../../components/Modal'
+import { Modal } from "../../../components/Modal";
 import FastAverageColor from "fast-average-color";
 
 export const Profile = () => {
   const { session } = useSession();
   const [color, setColor] = useState();
   const [active, setActive] = useState(false);
-
   const getColor = useCallback(() => {
     if (!session.pic) return;
     const avgColor = new FastAverageColor();
@@ -31,7 +31,7 @@ export const Profile = () => {
 
   return (
     <>
-    <Modal onClick={() => setActive(!active)} active={active}/>
+      <Modal onClick={() => setActive(!active)} active={active} />
       <Wrapper color={color?.hex}>
         <Infos light={color?.isLight}>
           <ImageDiv>
@@ -55,7 +55,9 @@ export const Profile = () => {
             </div>
           </div>
         </Infos>
-        <Content></Content>
+        <Content>
+          <GoToMenu to="/">SUAS MÚSICAS</GoToMenu>
+        </Content>
       </Wrapper>
     </>
   );

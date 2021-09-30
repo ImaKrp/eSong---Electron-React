@@ -9,11 +9,14 @@ import { Main } from "../pages/Menu/Main";
 import { Profile } from "../pages/Menu/Profile";
 import { Player } from "../pages/Player";
 import { Menu } from "../layouts/Menu";
+import {useSession} from '../hooks/useSession'
 
 export function AppRoutes() {
+  const {logged} = useSession()
   return (
     <Router>
       <Redirect from="*" to="/" />
+      {logged &&  <Redirect to="/profile" />}
       <Switch>
         <Route exact path="/">
           <Menu background={true}>

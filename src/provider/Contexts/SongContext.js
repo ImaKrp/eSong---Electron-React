@@ -23,6 +23,7 @@ export function SongProvider({ children }) {
   }, [songs]);
 
   const getSongByIndex = (i, index) => {
+    console.log(i, index)
     setSong(songs[i][index]);
   };
 

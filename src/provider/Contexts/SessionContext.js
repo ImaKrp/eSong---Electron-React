@@ -16,6 +16,7 @@ export function SessionProvider({ children }) {
     getLocalData("@eSong:User") ?? getSessionData("@eSong:User")
   );
   const [genId, setGenId] = useState(0);
+  const [logged, setLogged] = useState(session ? true : false);
 
   function upperFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -31,6 +32,7 @@ export function SessionProvider({ children }) {
     localStorage.removeItem("@eSong:User");
     window.sessionStorage.removeItem("@eSong:User");
     setSession();
+    setLogged();
   }
 
   async function CreateSession(Email, Pass, RemindUser) {
@@ -42,8 +44,7 @@ export function SessionProvider({ children }) {
       setSession(Login[0]);
       if (RemindUser)
         changeLocalData({ formName: "@eSong:User", object: Login[0] });
-      else
-        changeSessionData({ formName: "@eSong:User", object: Login[0] });
+      else changeSessionData({ formName: "@eSong:User", object: Login[0] });
       return true;
     }
 
@@ -108,6 +109,8 @@ export function SessionProvider({ children }) {
         fetchAccounts,
         updateUser,
         session,
+        logged,
+        setLogged,
       }}
     >
       {children}
