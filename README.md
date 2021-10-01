@@ -6,6 +6,7 @@
 * [User database](#user-database)
 * [Launch Frontend](#launch-frontend)
 
+
 ## 📥｜Install Dependencies
 > infos:
 1. This one is really simple, let's go for it.
