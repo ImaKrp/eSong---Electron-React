@@ -38,8 +38,8 @@ And json server will be launched on http://localhost:8000
 1. On compile it will start React.js and Electron.js.
 2. You can acess the front end on Electron.js window or on React.js (http://localhost:3000).
 
-<img src="https://pbs.twimg.com/media/FAema_HX0AQOBce?format=jpg&name=large">
-
+<img width="50%" src="https://pbs.twimg.com/media/FAema_HX0AQOBce?format=jpg&name=large" />
+<img width="50%" src="https://pbs.twimg.com/media/FAfthE4XIAAh7Jr?format=jpg&name=large" />
 Start React.js n' Electron.js:
 ```sh
 yarn start
