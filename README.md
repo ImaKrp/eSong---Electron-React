@@ -7,7 +7,7 @@
 * [Launch Frontend](#launch-frontend)
 
 
-## 📥｜Install Dependencies
+## 🔨｜Install Dependencies
 > infos:
 1. This one is really simple, let's go for it.
 
