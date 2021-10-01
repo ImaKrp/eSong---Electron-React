@@ -10,6 +10,7 @@ function createWindow() {
     height: 720,
     resizable: false,
     icon: "public/icon.png",
+    fullscreenable: false,
   });
 
   mainWindow.loadURL(
@@ -18,10 +19,6 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
   mainWindow.on("closed", () => (mainWindow = null));
-
-  mainWindow.on("maximize", () => {
-    mainWindow.unmaximize();
-  });
 
   mainWindow.removeMenu();
 }
