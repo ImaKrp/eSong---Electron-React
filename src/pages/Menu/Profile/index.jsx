@@ -30,7 +30,7 @@ export const Profile = () => {
   }, [getColor]);
 
   const imgPath =
-  "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
+    "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
 
   return (
     <>

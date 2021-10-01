@@ -9,10 +9,10 @@ import { Main } from "../pages/Menu/Main";
 import { Profile } from "../pages/Menu/Profile";
 import { Player } from "../pages/Player";
 import { Menu } from "../layouts/Menu";
-import {useSession} from '../hooks/useSession'
+import { useSession } from "../hooks/useSession";
 
 export function AppRoutes() {
-  const {session} = useSession()
+  const { session } = useSession();
   const isLoggedIn = session;
   return (
     <Router>

@@ -10,7 +10,7 @@ export const Log = (props) => {
         <Header>
           <Logo src={`${imgPath}icon.svg`} alt="Logo" />
           <p>
-          eSong<span>®</span>
+            eSong<span>®</span>
           </p>
         </Header>
         {props.children}

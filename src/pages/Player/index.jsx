@@ -169,18 +169,10 @@ export const Player = () => {
               onClick={(e) => handleVolume(e)}
               onContextMenu={(e) => handleVolume(e)}
             >
-              {volume === 0.05 && (
-                <Sound level={1}/>
-              )}
-              {volume === 0.1 && (
-                <Sound level={2}/>
-              )}
-              {volume >= 0.15 && (
-                <Sound level={3}/>
-              )}
-              {volume === 0 && (
-                <Sound level={0}/>
-              )}
+              {volume === 0.05 && <Sound level={1} />}
+              {volume === 0.1 && <Sound level={2} />}
+              {volume >= 0.15 && <Sound level={3} />}
+              {volume === 0 && <Sound level={0} />}
             </Volume>
           </Controlers>
         </ModalWrapper>

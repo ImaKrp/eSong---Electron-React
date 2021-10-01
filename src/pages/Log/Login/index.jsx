@@ -26,6 +26,7 @@ export const Login = () => {
   const [remindUser, setRemindUser] = useState(true);
   const [visibility, setVisibility] = useState(false);
   const { CreateSession, fetchAccounts } = useSession();
+
   const testServer = useCallback(async () => {
     try {
       await fetchAccounts();
@@ -44,9 +45,7 @@ export const Login = () => {
 
   const handleEmailChange = (value) => {
     setEmail(value);
-    setEmailError(
-      value ? "" : "⨉ Insira seu endereço de e-mail do eSong."
-    );
+    setEmailError(value ? "" : "⨉ Insira seu endereço de e-mail do eSong.");
   };
 
   const handlePasswordChange = (value) => {

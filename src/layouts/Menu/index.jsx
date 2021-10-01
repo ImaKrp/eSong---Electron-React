@@ -6,7 +6,7 @@ export const Menu = (props) => {
   return (
     <>
       <Body>
-        <Header background={props.background}/>
+        <Header background={props.background} />
         {props.children}
       </Body>
     </>

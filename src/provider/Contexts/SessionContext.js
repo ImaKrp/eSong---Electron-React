@@ -88,6 +88,7 @@ export function SessionProvider({ children }) {
 
   async function updateUser(email, pass, name, pic, id) {
     if (pic === "https://") pic = "";
+
     const Name = upperFirstLetter(name);
     const submit = {
       id: `${id}`,
@@ -97,15 +98,19 @@ export function SessionProvider({ children }) {
       pic: `${pic}`,
     };
 
-    await userApi.put(`/accounts/${id}`, submit);
+    if (email === "teste@gmail.com") {
+      setSession(submit);
+    } else {
+      await userApi.put(`/accounts/${id}`, submit);
 
-    setSession(submit);
+      setSession(submit);
 
-    if (getLocalData("@eSong:User")) {
-      changeLocalData({ formName: "@eSong:User", object: submit });
-    } else changeSessionData({ formName: "@eSong:User", object: submit });
+      if (getLocalData("@eSong:User")) {
+        changeLocalData({ formName: "@eSong:User", object: submit });
+      } else changeSessionData({ formName: "@eSong:User", object: submit });
 
-    return true;
+      return true;
+    }
   }
 
   return (
