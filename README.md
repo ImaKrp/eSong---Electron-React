@@ -1,70 +1,52 @@
-<h1 align="center">Welcome to eSong. </h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000" />
-  
-  <a target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://choosealicense.com/licenses/mit/" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-  <a href="https://twitter.com/whatakrp" target="_blank">
-    <img alt="Twitter: whatakrp" src="https://img.shields.io/twitter/follow/whatakrp.svg?style=social" />
-  </a>
-</p>
+# eSong - `with React.js n' Electron.js`
 
-> Simple Song Player using Public API
+> This is a small personal project, all the frontend and login / signup was made by me and the songs i get from a public API. How to use / test it:
 
-### 🏠 [Homepage](https://github.com/ImaKrp/eSong---Electron-React)
+* [Install Dependencies](#install-dependencies)
+* [User database](#user-database)
+* [Launch Frontend](#launch-frontend)
 
-## Requirements
+## 📥｜Install Dependencies
+> infos:
+1. This one is really simple, let's go for it.
 
-Json Server
-
-```sh
-npm install -g json-server
-```
-
-Yarn to install all dependencies
-
+Install all Dependencies:
 ```sh
 yarn
 ```
+And you're ready to go.
 
-## Run tests
+---
 
-Start React Application:
+## 📥｜User database
+> infos:
+1. The database is the db.json on base folder.
+2. You can add data manually or sign up by front.
+3. If you don't start the json server you get an error but can use a default account (email: teste@gmail.com; pass: 123).
 
+Start Json Server:
+```sh
+json-server --watch db.json --port 8000
+```
+And json server will be launched on http://localhost:8000
+
+---
+
+## 💻｜Launch Frontend
+> infos:
+1. On compile it will start React.js and Electron.js.
+2. You can acess the front end on Electron.js window or on React.js (http://localhost:3000).
+
+<img src="https://pbs.twimg.com/media/FAema_HX0AQOBce?format=jpg&name=large">
+
+Start React.js n' Electron.js:
 ```sh
 yarn start
 ```
 
-And open [Localhost](http://localhost:3000)
+---
 
-Start Json Server:
-
-```sh
-json-server --watch db.json --port 8000
-```
-
-(Or use the default account, email: teste@gmail.com; pass: 123. You can use it even the server is off.)
-
-## 📑 Modifying Database
-
-You can modify the db.json.
-
-## Author
-
-👤 **Júlio Carvalho Gonçalves**
-
-- Twitter: [@whatakrp](https://twitter.com/whatakrp)
-- Github: [@ImaKrp](https://github.com/ImaKrp)
-
-## Support Me on GitHub
-
-Give a ⭐️ if this project helped you somehow!
-
-## 📝 License
+## 📝｜License
 
 Copyright © 2021 [Júlio Carvalho Gonçalves](https://github.com/ImaKrp).<br />
 This project is [GNU General Public License v3.0](https://github.com/ImaKrp/eSong---Electron-React/blob/master/LICENSE) licensed.
