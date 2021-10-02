@@ -170,8 +170,8 @@ export const Controlers = styled.div`
 
 export const Volume = styled.button`
   display: flex;
-  width: fit-content;
-  height: fit-content;
+  width: 3.2rem;
+  height: 3.2rem;
   justify-content: center;
   align-items: center;
   background-color: transparent;
@@ -179,6 +179,11 @@ export const Volume = styled.button`
   cursor: pointer;
   position: absolute;
   right: 0;
+  border-radius: 1.6rem;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #3c3c3c66;
+  }
 
   svg {
     width: 2.1rem;

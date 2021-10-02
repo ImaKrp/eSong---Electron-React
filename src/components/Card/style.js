@@ -47,11 +47,12 @@ export const Wrapper = styled.div`
   gap: 0.4rem;
   padding: 16px;
   border-radius: 0.4rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s,transform 0.3s, box-shadow 0.3s;
 
   &:hover {
     background-color: var(--b700);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 16px 24px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 5%);
   }
 
   &:hover ${Play} {
