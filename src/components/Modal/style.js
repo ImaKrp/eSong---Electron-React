@@ -130,7 +130,7 @@ export const Submit = styled.button`
   color: var(--black);
   font-size: 1.3rem;
   letter-spacing: 2px;
-  font-weight: 800;
+  font-weight: bold;
   height: 3.2rem;
   border-radius: 1.6rem;
   cursor: pointer;

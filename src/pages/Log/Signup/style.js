@@ -78,7 +78,7 @@ export const SignBtn = styled.button`
   border-radius: 2.4rem;
   font-size: 1.4rem;
   letter-spacing: 2px;
-  font-weight: 600;
+  font-weight: bold;
   background-color: var(--purple);
   transition: filter 0.3s;
   color: var(--white);
