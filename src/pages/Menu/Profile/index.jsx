@@ -19,10 +19,14 @@ export const Profile = () => {
   const [active, setActive] = useState(false);
   const getColor = useCallback(() => {
     if (!session.pic) return;
-    const avgColor = new FastAverageColor();
-    avgColor.getColorAsync(session.pic).then((color) => {
-      setColor(color);
-    });
+    try {
+      const avgColor = new FastAverageColor();
+      avgColor.getColorAsync(session.pic).then((color) => {
+        setColor(color);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, [session.pic]);
 
   useEffect(() => {
@@ -35,8 +39,8 @@ export const Profile = () => {
   return (
     <>
       <Modal onClick={() => setActive(!active)} active={active} />
-      <Wrapper color={color?.hex}>
-        <Infos light={color?.isLight}>
+      <Wrapper color={color?.hex ?? 'rgb(83, 83, 83)'}>
+        <Infos>
           <ImageDiv>
             <EditImage className="edit" onClick={() => setActive(!active)}>
               <img src={`${imgPath}edit.svg`} alt="editName" />
