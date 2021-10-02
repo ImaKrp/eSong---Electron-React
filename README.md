@@ -1,6 +1,6 @@
 # eSong - `with React.js n' Electron.js`
 
-> This is a small personal project, all the frontend and login / signup was made by me and the songs i get from a public API. How to use / test it:
+> This is a small personal project, all the frontend and login / signup was made by me and the songs come from Deezer public API. How to use / test it:
 
 - [Install Dependencies](#install-dependencies)
 - [User database](#user-database)
