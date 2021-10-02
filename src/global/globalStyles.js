@@ -69,8 +69,6 @@ input{
   border-width: 0;
 }
 
-
-/* width */
 ::-webkit-scrollbar {
   width: 0;
 }

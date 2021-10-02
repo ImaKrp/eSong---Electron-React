@@ -27,15 +27,12 @@ export const Header = (props) => {
     document.body.removeEventListener("click", closeCollapse);
   };
 
-  const imgPath =
-    "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
-
   return (
     <>
       <Wrapper background={props.background}>
         <Container>
           <Home to="/">
-            <img src={`${imgPath}home.svg`} alt="goToHome" />
+            <img src='/icons/home.svg' alt="goToHome" />
           </Home>
         </Container>
         <Container>
@@ -45,7 +42,7 @@ export const Header = (props) => {
               <Image src={session.pic} />
             ) : (
               <UserSVG>
-                <img src={`${imgPath}user.svg`} alt="genUserImg" />
+                <img src='/icons/user.svg' alt="genUserImg" />
               </UserSVG>
             )}
             {session.name}

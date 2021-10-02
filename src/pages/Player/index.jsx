@@ -136,9 +136,6 @@ export const Player = () => {
     audio.volume = tempVolume;
   };
 
-  const imgPath =
-    "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
-
   return (
     <>
       <PlayerWrapper>
@@ -181,16 +178,16 @@ export const Player = () => {
               {loopState === 2 && <LoopSVG level={2} />}
             </Loop>
             <PrevSong to={`/song?artistId=${artistId}&index=${PrevIndex}`}>
-              <img src={`${imgPath}PrevSong.svg`} alt="previousSong" />
+              <img src="/icons/PrevSong.svg" alt="previousSong" />
             </PrevSong>
             <Play onClick={() => play(!isPlaying)}>
               <img
-                src={isPlaying ? `${imgPath}pause.svg` : `${imgPath}play.svg`}
+                src={isPlaying ? "/icons/pause.svg" : "/icons/play.svg"}
                 alt="playSong"
               />
             </Play>
             <NextSong to={`/song?artistId=${artistId}&index=${NextIndex}`}>
-              <img src={`${imgPath}NextSong.svg`} alt="nextSong" />
+              <img src="/icons/NextSong.svg" alt="nextSong" />
             </NextSong>
             <Volume
               onClick={(e) => handleVolume(e)}

@@ -33,9 +33,6 @@ export const Profile = () => {
     getColor();
   }, [getColor]);
 
-  const imgPath =
-    "https://raw.githubusercontent.com/ImaKrp/eSong---Electron-React/7b5645222478d5a94b6d18bd76a60660d9bb3d68/public/icons/";
-
   return (
     <>
       <Modal onClick={() => setActive(!active)} active={active} />
@@ -43,13 +40,13 @@ export const Profile = () => {
         <Infos>
           <ImageDiv>
             <EditImage className="edit" onClick={() => setActive(!active)}>
-              <img src={`${imgPath}edit.svg`} alt="editName" />
+              <img src="/icons/edit.svg" alt="editName" />
               Editar Imagem
             </EditImage>
             {session.pic ? (
               <Image src={session.pic} />
             ) : (
-              <Image size="65%" src={`${imgPath}user.svg`} alt="genUserImg" />
+              <Image size="65%" src="/icons/user.svg" alt="genUserImg" />
             )}
           </ImageDiv>
           <div className="column">
@@ -57,7 +54,7 @@ export const Profile = () => {
             <div className="row">
               {session.name}
               <EditName className="edit" onClick={() => setActive(!active)}>
-                <img src={`${imgPath}edit.svg`} alt="editName" />
+                <img src="/icons/edit.svg" alt="editName" />
               </EditName>
             </div>
           </div>
