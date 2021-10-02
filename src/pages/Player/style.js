@@ -184,3 +184,21 @@ export const Volume = styled.button`
     height: 2.1rem;
   }
 `;
+
+export const Loop = styled(Volume)`
+  left: 0;
+  svg {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+  &:after {
+    background-color: var(--blue);
+    border-radius: 50%;
+    bottom: -0.75rem;
+    content: "";
+    display: ${({ level }) => (level > 0 ? "block" : "none")};
+    height: 4px;
+    position: absolute;
+    width: 4px;
+  }
+`;

@@ -10,13 +10,15 @@ import {
   PrevSong,
   Controlers,
   Volume,
+  Loop,
 } from "./style";
 import { useQuery } from "../../hooks/useQuery";
 import FastAverageColor from "fast-average-color";
 import { useSong } from "../../hooks/useSong";
 import { Slider } from "../../components/Slider";
 import { Redirect } from "react-router-dom";
-import { Sound } from "../../svg/index";
+import { Sound } from "../../svg/Sound";
+import { LoopSVG } from "../../svg/Loop";
 
 export const Player = () => {
   const query = useQuery();
@@ -24,14 +26,19 @@ export const Player = () => {
   const artistId = query.get("artistId");
   const [color, setColor] = useState();
   const [percentage, setPercentage] = useState(0);
-  const { getSongByIndex, song } = useSong();
+  const {
+    getSongByIndex,
+    song,
+    songVolume,
+    setSongVolume,
+    loopState,
+    handleLoopState,
+  } = useSong();
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [redirectToNext, setRedirectToNext] = useState(false);
   const [songError, setSongError] = useState(false);
-
-  const [volume, setVolume] = useState(0.05);
 
   const PrevIndex = Number(index) > 0 ? Number(index) - 1 : 5;
   const NextIndex = Number(index) < 5 ? Number(index) + 1 : 0;
@@ -74,13 +81,28 @@ export const Player = () => {
     setCurrentTime(time.toFixed(2));
     if (Number(time) !== 0)
       if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
-        setRedirectToNext(true);
+        console.log(loopState, index)
+        if (loopState === 0 && index === '5') {
+          setRedirectToNext(false);
+          play(!isPlaying)
+          return;
+        }
+        if (loopState !== 2) setRedirectToNext(true);
+        if (loopState === 2) {
+          play(true);
+        }
       }
   };
 
-  const play = (isPlaying) => {
+  const play = (play) => {
     const audio = audioRef.current;
-    audio.volume = volume;
+    audio.volume = songVolume;
+
+    if (play) {
+      setIsPlaying(true);
+      audio.play();
+      return;
+    }
 
     if (!isPlaying) {
       setIsPlaying(true);
@@ -95,26 +117,23 @@ export const Player = () => {
 
   const handleVolume = (e) => {
     const audio = audioRef.current;
-    let volumeLet = 0;
+
+    let tempVolume;
 
     if (e.button === 0) {
-      if (volume === 0.15) return;
-      if (volume === 0.1) volumeLet = 0.15;
-      if (volume === 0.05) volumeLet = 0.1;
-      if (volume === 0) volumeLet = 0.05;
-
-      audio.volume = volumeLet;
-      setVolume(volumeLet);
+      if (songVolume === 0.15) return;
+      if (songVolume === 0.1) tempVolume = 0.15;
+      if (songVolume === 0.05) tempVolume = 0.1;
+      if (songVolume === 0) tempVolume = 0.05;
     }
     if (e.button === 2) {
-      if (volume === 0.15) volumeLet = 0.1;
-      if (volume === 0.1) volumeLet = 0.05;
-      if (volume === 0.05) volumeLet = 0;
-      if (volume === 0) return;
-
-      audio.volume = volumeLet;
-      setVolume(volumeLet);
+      if (songVolume === 0.15) tempVolume = 0.1;
+      if (songVolume === 0.1) tempVolume = 0.05;
+      if (songVolume === 0.05) tempVolume = 0;
+      if (songVolume === 0) return;
     }
+    setSongVolume(tempVolume);
+    audio.volume = tempVolume;
   };
 
   const imgPath =
@@ -139,7 +158,7 @@ export const Player = () => {
             onTimeUpdate={getCurrDuration}
             onLoadedData={(e) => {
               setDuration(e.currentTarget.duration.toFixed(2));
-              play();
+              play(true);
             }}
           ></audio>
           <div className="row">
@@ -153,10 +172,18 @@ export const Player = () => {
             </span>
           </div>
           <Controlers>
+            <Loop
+              onClick={() => handleLoopState()}
+              level={loopState === 0 ? 0 : loopState === 1 ? 1 : 2}
+            >
+              {loopState === 0 && <LoopSVG level={0} />}
+              {loopState === 1 && <LoopSVG level={1} />}
+              {loopState === 2 && <LoopSVG level={2} />}
+            </Loop>
             <PrevSong to={`/song?artistId=${artistId}&index=${PrevIndex}`}>
               <img src={`${imgPath}PrevSong.svg`} alt="previousSong" />
             </PrevSong>
-            <Play onClick={() => play(isPlaying)}>
+            <Play onClick={() => play(!isPlaying)}>
               <img
                 src={isPlaying ? `${imgPath}pause.svg` : `${imgPath}play.svg`}
                 alt="playSong"
@@ -169,10 +196,10 @@ export const Player = () => {
               onClick={(e) => handleVolume(e)}
               onContextMenu={(e) => handleVolume(e)}
             >
-              {volume === 0.05 && <Sound level={1} />}
-              {volume === 0.1 && <Sound level={2} />}
-              {volume >= 0.15 && <Sound level={3} />}
-              {volume === 0 && <Sound level={0} />}
+              {songVolume === 0.05 && <Sound level={1} />}
+              {songVolume === 0.1 && <Sound level={2} />}
+              {songVolume >= 0.15 && <Sound level={3} />}
+              {songVolume === 0 && <Sound level={0} />}
             </Volume>
           </Controlers>
         </ModalWrapper>

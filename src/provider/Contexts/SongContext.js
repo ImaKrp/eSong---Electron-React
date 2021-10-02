@@ -7,6 +7,8 @@ export const songContext = createContext(initialState);
 export function SongProvider({ children }) {
   const [songs] = useState([]);
   const [song, setSong] = useState({});
+  const [songVolume, setSongVolume] = useState(0.05);
+  const [loopState, setLoopState] = useState(0);
 
   const artists = ["Shawn Mendes", "Chri$tian Gate$"];
 
@@ -31,6 +33,14 @@ export function SongProvider({ children }) {
     }
   };
 
+  const handleLoopState = () => {
+    if (loopState === 2) {
+      setLoopState(0);
+      return;
+    }
+    setLoopState(loopState+1)
+  };
+
   return (
     <songContext.Provider
       value={{
@@ -39,6 +49,10 @@ export function SongProvider({ children }) {
         songs,
         song,
         artists,
+        songVolume,
+        setSongVolume,
+        handleLoopState,
+        loopState
       }}
     >
       {children}
