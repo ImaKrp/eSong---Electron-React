@@ -29,7 +29,7 @@ And you're ready to go.
 1. The database is the db.json on base folder.
 2. You can add data manually or sign up by front.
 3. If you don't start the json server you get an error but can use a default account (email: teste@gmail.com; pass: 123).
-4. The default account can only be used when the app dont egt the acconts from the server you may need to click more then once to log in.
+4. The default account can only be used when the app dont get the acconts from the server you may need to click more then once to log in.
 
 Start Json Server:
 
