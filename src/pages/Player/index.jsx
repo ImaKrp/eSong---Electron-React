@@ -50,10 +50,14 @@ export const Player = () => {
 
   const getColor = useCallback(() => {
     if (!song?.album?.cover_medium) return;
-    const avgColor = new FastAverageColor();
+    try {
+      const avgColor = new FastAverageColor();
     avgColor.getColorAsync(song?.album?.cover_medium).then((color) => {
       setColor(color);
     });
+    } catch (error) {
+      console.log(error);
+    }
   }, [song?.album?.cover_medium]);
 
   useEffect(() => {
@@ -81,7 +85,6 @@ export const Player = () => {
     setCurrentTime(time.toFixed(2));
     if (Number(time) !== 0)
       if (Number(time).toFixed(2) === Number(duration).toFixed(2)) {
-        console.log(loopState, index)
         if (loopState === 0 && index === '5') {
           setRedirectToNext(false);
           play(!isPlaying)
