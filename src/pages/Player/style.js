@@ -200,7 +200,7 @@ export const Loop = styled(Volume)`
   &:after {
     background-color: var(--blue);
     border-radius: 50%;
-    bottom: -0.75rem;
+    bottom: 0;
     content: "";
     display: ${({ level }) => (level > 0 ? "block" : "none")};
     height: 4px;
