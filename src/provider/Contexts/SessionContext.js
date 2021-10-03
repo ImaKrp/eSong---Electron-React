@@ -51,8 +51,8 @@ export function SessionProvider({ children }) {
     if (Login[0]) {
       setSession(Login[0]);
       if (RemindUser)
-        changeLocalData({ formName: "@eSong:User", object: Login[0] });
-      else changeSessionData({ formName: "@eSong:User", object: Login[0] });
+        changeLocalData({ dataName: "@eSong:User", object: Login[0] });
+      else changeSessionData({ dataName: "@eSong:User", object: Login[0] });
       return true;
     }
 
@@ -80,8 +80,8 @@ export function SessionProvider({ children }) {
 
     setSession(submit);
 
-    if (RemindUser) changeLocalData({ formName: "@eSong:User", submit });
-    else changeSessionData({ formName: "@eSong:User", object: submit });
+    if (RemindUser) changeLocalData({ dataName: "@eSong:User", object: submit });
+    else changeSessionData({ dataName: "@eSong:User", object: submit });
 
     return true;
   }
@@ -106,8 +106,8 @@ export function SessionProvider({ children }) {
       setSession(submit);
 
       if (getLocalData("@eSong:User")) {
-        changeLocalData({ formName: "@eSong:User", object: submit });
-      } else changeSessionData({ formName: "@eSong:User", object: submit });
+        changeLocalData({ dataName: "@eSong:User", object: submit });
+      } else changeSessionData({ dataName: "@eSong:User", object: submit });
 
       return true;
     }

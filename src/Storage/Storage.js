@@ -1,21 +1,21 @@
-export function getLocalData(formName) {
-  const storedData = localStorage.getItem(formName);
+export function getLocalData(dataName) {
+  const storedData = localStorage.getItem(dataName);
   if (!storedData) return;
   return JSON.parse(storedData);
 }
 
-export function changeLocalData({ formName, object }) {
+export function changeLocalData({ dataName, object }) {
   const parsedObject = JSON.stringify(object);
-  localStorage.setItem(formName, parsedObject);
+  localStorage.setItem(dataName, parsedObject);
 }
 
-export function getSessionData(formName) {
-  const storedData = window.sessionStorage.getItem(formName);
+export function getSessionData(dataName) {
+  const storedData = window.sessionStorage.getItem(dataName);
   if (!storedData) return;
   return JSON.parse(storedData);
 }
 
-export function changeSessionData({ formName, object }) {
+export function changeSessionData({ dataName, object }) {
   const parsedObject = JSON.stringify(object);
-  window.sessionStorage.setItem(formName, parsedObject);
+  window.sessionStorage.setItem(dataName, parsedObject);
 }
