@@ -56,19 +56,20 @@ export const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (email === "teste@gmail.com" && password === "123") {
+    const serverStatus = await testServer();
+
+    if (serverError && email === "teste@gmail.com" && password === "123") {
       const resp = await CreateSession(email, password, remindUser);
       if (resp !== true) {
         if (resp === "email") setEmailError("⨉ E-mail não Cadastrado.");
         if (resp === "senha") setPasswordError("⨉ Senha incorreta.");
       }
-      return
+      return;
     }
 
-    const serverStatus = await testServer();
     if (serverStatus) {
       setServerError("Error: Couldn't Connect to Server http://localhost:8000");
-      return
+      return;
     }
 
     let error = 0;
