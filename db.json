@@ -6,6 +6,13 @@
       "pass": "123",
       "name": "Kreep",
       "pic": "https://pbs.twimg.com/profile_images/1424516203440230400/V4XGiBj__200x200.jpg"
+    },
+    {
+      "id": 2,
+      "email": "teste@gmail.com",
+      "pass": "123",
+      "name": "Teste",
+      "pic": "https://64.media.tumblr.com/7031561507aa20b65087c7812ace806c/ea95d609d48498c5-e5/s2048x3072/e948e9677edaa3caed15be26dff8d21b11624546.jpg"
     }
   ]
 }
