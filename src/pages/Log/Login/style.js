@@ -199,4 +199,5 @@ export const ServerToast = styled.div`
   color: var(--white);
   background-color: var(--red);
   text-align: center;
+  user-select: none;
 `;

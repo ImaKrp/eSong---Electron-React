@@ -95,6 +95,10 @@ export const Signup = () => {
       setServerError("Error: Couldn't Connect to Server http://localhost:8000");
     }
 
+    if (!serverStatus) {
+      setServerError("");
+    }
+
     let error = 0;
 
     if (verifyEmailError) error++;

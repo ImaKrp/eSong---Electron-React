@@ -72,6 +72,10 @@ export const Login = () => {
       return;
     }
 
+    if (!serverStatus) {
+      setServerError("");
+    }
+
     let error = 0;
 
     if (!password) {

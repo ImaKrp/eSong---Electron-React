@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Play = styled(Link)`
   position: absolute;
-  display: none;
+  display: flex;
   bottom: 2.3rem;
   right: 0.7rem;
   width: 4rem;
@@ -13,14 +13,11 @@ export const Play = styled(Link)`
   justify-content: center;
   align-items: center;
   transition: transform 0.3s;
+  transform: scale(0);
 
   img {
     width: 2rem;
     height: 2rem;
-  }
-
-  &:hover {
-    transform: scale(1.1);
   }
 `;
 
@@ -47,7 +44,7 @@ export const Wrapper = styled.div`
   gap: 0.4rem;
   padding: 16px;
   border-radius: 0.4rem;
-  transition: background-color 0.3s,transform 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 
   &:hover {
     background-color: var(--b700);
@@ -56,7 +53,10 @@ export const Wrapper = styled.div`
   }
 
   &:hover ${Play} {
-    display: flex;
+    transform: scale(1);
+  }
+  ${Play}:hover {
+    transform: scale(1.1);
   }
 `;
 

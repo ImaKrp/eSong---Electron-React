@@ -1,6 +1,31 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const EditImage = styled.button`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--white);
+  width: 18rem;
+  height: 18rem;
+  transition: opacity 0.3s;
+  background-color: #000000a6;
+  border-radius: 8.95rem;
+  user-select: none;
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+  img {
+    width: 6rem;
+  }
+`;
+
 export const ImageDiv = styled.div`
   width: 18rem;
   height: 18rem;
@@ -13,8 +38,10 @@ export const ImageDiv = styled.div`
   user-select: none;
   justify-content: center;
 
-  &:hover .edit {
-    display: flex;
+  &:hover ${EditImage} {
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
   }
 `;
 
@@ -35,6 +62,25 @@ export const Wrapper = styled.div`
   align-items: top;
   justify-content: flex-start;
   padding: 3.5rem 4rem;
+`;
+
+export const EditName = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  height: 5rem;
+  transition: opacity 0.3s;
+  width: 5rem;
+  user-select: none;
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+  margin-top: 2.35rem;
+  img {
+    width: 4rem;
+  }
 `;
 
 export const Infos = styled.div`
@@ -65,8 +111,10 @@ export const Infos = styled.div`
       display: flex;
       gap: 1rem;
       width: fit-content;
-      &:hover .edit {
-        display: flex;
+      &:hover ${EditName} {
+        opacity: 1;
+        pointer-events: all;
+        cursor: pointer;
       }
     }
   }
@@ -82,42 +130,6 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-export const EditName = styled.button`
-  display: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: transparent;
-  height: 3rem;
-  user-select: none;
-  margin-top: 3.5rem;
-  img {
-    width: 4rem;
-  }
-`;
-
-export const EditImage = styled.button`
-  position: absolute;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  gap: 1.5rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--white);
-  width: 18rem;
-  height: 18rem;
-  transition: background-color 0.3s;
-  background-color: #000000a6;
-  border-radius: 11.5rem;
-  user-select: none;
-  img {
-    width: 6rem;
-  }
 `;
 
 export const GoToMenu = styled(Link)`
