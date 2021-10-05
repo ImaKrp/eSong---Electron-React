@@ -30,6 +30,7 @@ export const Login = () => {
   const testServer = useCallback(async () => {
     try {
       await fetchAccounts();
+      setServerError("");
     } catch (err) {
       if (err.toString() === "Error: Network Error")
         setServerError(

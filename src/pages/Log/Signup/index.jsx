@@ -37,6 +37,7 @@ export const Signup = () => {
   const testServer = useCallback(async () => {
     try {
       await fetchAccounts();
+      setServerError("");
     } catch (err) {
       if (err.toString() === "Error: Network Error")
         setServerError(
